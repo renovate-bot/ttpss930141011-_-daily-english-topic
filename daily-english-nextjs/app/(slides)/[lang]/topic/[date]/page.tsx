@@ -1,6 +1,6 @@
 import { getAllTopics, getTopicByDate } from '@/lib/topics'
 import SlideViewer from '@/components/SlideViewer'
-import { WordLookupProvider } from '@/contexts/WordLookupContext'
+import { WordLookupProvider } from '@/components/word-lookup/WordLookupProvider'
 import { notFound } from 'next/navigation'
 import { type Locale } from '@/i18n-config'
 import { getDictionary } from '@/lib/dictionaries'

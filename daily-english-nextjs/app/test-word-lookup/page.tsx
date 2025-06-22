@@ -1,6 +1,6 @@
 'use client'
 
-import { WordLookupProvider } from '@/contexts/WordLookupContext'
+import { WordLookupProvider } from '@/components/word-lookup/WordLookupProvider'
 import { WordLookupManager } from '@/components/word-lookup/WordLookupManager'
 import { type Dictionary } from '@/types/dictionary'
 

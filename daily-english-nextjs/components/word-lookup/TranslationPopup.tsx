@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import { useWordLookup } from '@/contexts/WordLookupContext'
+import { useWordLookup } from '@/hooks/useWordLookup'
 import { X, Copy, Volume2 } from 'lucide-react'
 import { type Dictionary } from '@/types/dictionary'
 

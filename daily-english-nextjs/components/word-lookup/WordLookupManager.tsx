@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import { useTextSelection } from '@/hooks/useTextSelection'
-import { useWordLookup } from '@/contexts/WordLookupContext'
+import { useWordLookup } from '@/hooks/useWordLookup'
 import { QuickLookupPopup } from './QuickLookupPopup'
 import { ContextMenu } from './ContextMenu'
 import { DeepLearningDrawer } from './DeepLearningDrawer'
