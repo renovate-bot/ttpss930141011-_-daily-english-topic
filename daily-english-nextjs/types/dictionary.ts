@@ -121,6 +121,7 @@ export interface Dictionary {
     noContent: string
     aiAssistant: string
     selectTextToLearn: string
+    selectTextToLearnDescription: string
     shortcuts: string
     keyboardShortcuts: string
   }

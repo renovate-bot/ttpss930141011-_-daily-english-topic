@@ -128,6 +128,7 @@ const mockDictionary: Dictionary = {
     noContent: '無內容',
     aiAssistant: 'AI 助手',
     selectTextToLearn: '選擇文字以開始學習',
+    selectTextToLearnDescription: '選擇並反白任何文字，然後點擊「深度分析」選項，即可開始學習該詞彙或句型的詳細解釋。',
     shortcuts: '快捷鍵',
     keyboardShortcuts: '鍵盤快捷鍵',
   },

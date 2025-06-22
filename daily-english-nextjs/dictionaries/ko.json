@@ -118,6 +118,7 @@
     "noContent": "콘텐츠 없음",
     "aiAssistant": "AI 어시스턴트",
     "selectTextToLearn": "학습할 텍스트를 선택하세요",
+    "selectTextToLearnDescription": "텍스트를 선택하고 강조 표시한 후 '상세 분석' 옵션을 클릭하여 어휘나 문장 패턴의 자세한 설명 학습을 시작하세요.",
     "shortcuts": "단축키",
     "keyboardShortcuts": "Esc: 닫기 | Ctrl+Tab: 탭 전환"
   }

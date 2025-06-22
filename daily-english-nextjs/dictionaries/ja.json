@@ -118,6 +118,7 @@
     "noContent": "コンテンツがありません",
     "aiAssistant": "AIアシスタント",
     "selectTextToLearn": "学習するテキストを選択してください",
+    "selectTextToLearnDescription": "テキストを選択してハイライトし、「詳細分析」オプションをクリックして、語彙や文型の詳細な説明の学習を開始してください。",
     "shortcuts": "ショートカット",
     "keyboardShortcuts": "Esc: 閉じる | Ctrl+Tab: タブ切り替え"
   }
