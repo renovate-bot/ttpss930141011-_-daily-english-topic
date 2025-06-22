@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { DictionaryEntry } from '@/contexts/WordLookupContext'
+import { DictionaryEntry } from '@/stores/useWordLookupStore'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
 interface FreeDictionaryResponse {
