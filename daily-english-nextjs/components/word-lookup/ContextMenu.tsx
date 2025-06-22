@@ -85,9 +85,11 @@ export function ContextMenu({ className = '', dictionary }: ContextMenuProps) {
     if (!activeSelection) return
     
     try {
-      await explainText(activeSelection.text)
+      // Open drawer first for better UX
       openDeepDrawer()
       hideContextMenu()
+      // Then load the explanation
+      await explainText(activeSelection.text)
     } catch (error) {
       console.error('Deep explanation failed:', error)
     }

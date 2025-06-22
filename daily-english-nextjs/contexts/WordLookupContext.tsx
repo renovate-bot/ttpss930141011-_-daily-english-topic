@@ -218,7 +218,11 @@ export function WordLookupProvider({
   }, [])
 
   const maximizeDeepDrawer = useCallback(() => {
-    setState(prev => ({ ...prev, isDeepDrawerMinimized: false }))
+    setState(prev => ({ 
+      ...prev, 
+      isDeepDrawerMinimized: false,
+      showDeepDrawer: true 
+    }))
   }, [])
 
   const toggleDeepDrawerMinimized = useCallback(() => {

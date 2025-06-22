@@ -20,17 +20,42 @@ export function Drawer({
   direction = "bottom",
   children,
 }: DrawerProps) {
+  const [isVisible, setIsVisible] = React.useState(false)
+  const [isAnimating, setIsAnimating] = React.useState(false)
+
+  React.useEffect(() => {
+    if (open) {
+      setIsVisible(true)
+      requestAnimationFrame(() => {
+        setIsAnimating(true)
+      })
+    } else {
+      setIsAnimating(false)
+      const timeout = setTimeout(() => {
+        setIsVisible(false)
+      }, 300) // Match animation duration
+      return () => clearTimeout(timeout)
+    }
+  }, [open])
+
+  if (!isVisible) return null
+
   return (
     <DrawerContext.Provider value={{ direction }}>
-      {open && (
-        <div className="fixed inset-0 z-50 flex">
-          <div
-            className="fixed inset-0 bg-black/80"
-            onClick={() => onOpenChange?.(false)}
-          />
-          {children}
-        </div>
-      )}
+      <div className="fixed inset-0 z-50 flex">
+        <div
+          className={cn(
+            "fixed inset-0 bg-black/80 transition-opacity duration-300",
+            isAnimating ? "opacity-100" : "opacity-0"
+          )}
+          onClick={() => onOpenChange?.(false)}
+        />
+        {React.Children.map(children, child =>
+          React.isValidElement(child)
+            ? React.cloneElement(child as React.ReactElement<DrawerContentProps>, { isAnimating })
+            : child
+        )}
+      </div>
     </DrawerContext.Provider>
   )
 }
@@ -45,13 +70,14 @@ DrawerTrigger.displayName = "DrawerTrigger"
 
 interface DrawerContentProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
+  isAnimating?: boolean
 }
 
 export const DrawerContent = React.forwardRef<HTMLDivElement, DrawerContentProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ className, children, isAnimating, ...props }, ref) => {
     const { direction } = React.useContext(DrawerContext)
 
-    const baseStyles = "fixed z-50 gap-4 bg-background p-6 shadow-lg"
+    const baseStyles = "fixed z-50 gap-4 bg-background p-6 shadow-lg transition-transform duration-300 ease-out"
     const directionStyles = {
       bottom: "inset-x-0 bottom-0 border-t max-h-[96vh] rounded-t-[10px]",
       top: "inset-x-0 top-0 border-b max-h-[96vh] rounded-b-[10px]",
@@ -59,11 +85,11 @@ export const DrawerContent = React.forwardRef<HTMLDivElement, DrawerContentProps
       right: "inset-y-0 right-0 h-full w-full sm:w-[400px] border-l",
     }
 
-    const animationStyles = {
-      bottom: "animate-in slide-in-from-bottom",
-      top: "animate-in slide-in-from-top",
-      left: "animate-in slide-in-from-left",
-      right: "animate-in slide-in-from-right",
+    const transformStyles = {
+      bottom: isAnimating ? "translate-y-0" : "translate-y-full",
+      top: isAnimating ? "translate-y-0" : "-translate-y-full",
+      left: isAnimating ? "translate-x-0" : "-translate-x-full",
+      right: isAnimating ? "translate-x-0" : "translate-x-full",
     }
 
     return (
@@ -72,7 +98,7 @@ export const DrawerContent = React.forwardRef<HTMLDivElement, DrawerContentProps
         className={cn(
           baseStyles,
           directionStyles[direction || "bottom"],
-          animationStyles[direction || "bottom"],
+          transformStyles[direction || "bottom"],
           className
         )}
         {...props}

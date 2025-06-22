@@ -336,12 +336,12 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
         tabIndex={-1}
         data-container="deep-learning-drawer"
         className={cn(
-          "fixed top-0 right-0 h-full bg-white border-l border-gray-200 shadow-2xl z-40 flex transition-transform duration-300",
+          "fixed top-0 right-0 h-full bg-white border-l border-gray-200 shadow-2xl z-40 flex transition-all duration-300 ease-out",
+          showDeepDrawer ? "translate-x-0" : "translate-x-full",
           className
         )}
         style={{ 
           width: `${deepDrawerWidth}px`,
-          transform: showDeepDrawer ? 'translateX(0)' : 'translateX(100%)',
         }}
       >
         {/* Integrated collapse button - moves with drawer */}
