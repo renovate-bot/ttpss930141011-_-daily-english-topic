@@ -20,8 +20,7 @@ export function ContextMenu({ className = '', dictionary }: ContextMenuProps) {
     activeSelection,
     hideContextMenu,
     translateText,
-    explainText,
-    openDeepDrawer
+    explainText
   } = useWordLookup()
 
   const menuRef = useRef<HTMLDivElement>(null)
@@ -85,10 +84,8 @@ export function ContextMenu({ className = '', dictionary }: ContextMenuProps) {
     if (!activeSelection) return
     
     try {
-      // Open drawer first for better UX
-      openDeepDrawer()
       hideContextMenu()
-      // Then load the explanation
+      // explainText will automatically open the drawer
       await explainText(activeSelection.text)
     } catch (error) {
       console.error('Deep explanation failed:', error)

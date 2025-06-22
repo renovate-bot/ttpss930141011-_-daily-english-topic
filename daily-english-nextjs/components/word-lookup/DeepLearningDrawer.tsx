@@ -176,8 +176,8 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
     }
   }, [isDragging, handleMouseMove, handleMouseUp])
 
-  // Show expand button when drawer is minimized or closed (desktop only)
-  if ((!showDeepDrawer || isDeepDrawerMinimized) && isDesktop) {
+  // Show expand button when drawer is minimized (desktop only)
+  if (isDeepDrawerMinimized && isDesktop) {
     return (
       <div
         className="fixed right-0 top-32 z-40"
@@ -317,6 +317,11 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
   }
 
   // Desktop state
+  // Don't render desktop drawer if it's both closed and minimized
+  if (!showDeepDrawer && !isDeepDrawerMinimized) {
+    return null
+  }
+
   return (
     <>
       {/* Toast notification */}
@@ -336,12 +341,13 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
         tabIndex={-1}
         data-container="deep-learning-drawer"
         className={cn(
-          "fixed top-0 right-0 h-full bg-white border-l border-gray-200 shadow-2xl z-40 flex transition-all duration-300 ease-out",
-          showDeepDrawer ? "translate-x-0" : "translate-x-full",
+          "fixed top-0 right-0 h-full bg-white border-l border-gray-200 shadow-2xl z-40 flex",
           className
         )}
         style={{ 
           width: `${deepDrawerWidth}px`,
+          transform: showDeepDrawer && !isDeepDrawerMinimized ? 'translateX(0)' : 'translateX(100%)',
+          transition: isDragging ? 'none' : 'transform 300ms ease-out'
         }}
       >
         {/* Integrated collapse button - moves with drawer */}

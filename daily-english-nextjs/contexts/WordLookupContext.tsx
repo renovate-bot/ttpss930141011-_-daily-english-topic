@@ -112,7 +112,7 @@ const initialState: WordLookupState = {
   showContextMenu: false,
   showTranslationPopup: false,
   showDeepDrawer: false,
-  isDeepDrawerMinimized: false,
+  isDeepDrawerMinimized: true, // Start minimized
   deepDrawerWidth: 400,
   currentDictionary: null,
   currentTranslation: null,
@@ -199,6 +199,7 @@ export function WordLookupProvider({
     setState(prev => ({ 
       ...prev, 
       showDeepDrawer: true,
+      isDeepDrawerMinimized: false,
       showTranslationPopup: false,
       showContextMenu: false
     }))
@@ -208,8 +209,8 @@ export function WordLookupProvider({
     setState(prev => ({ 
       ...prev, 
       showDeepDrawer: false,
-      deepTabs: [],
-      activeTabId: null
+      isDeepDrawerMinimized: true
+      // Keep tabs and activeTabId - don't clear them
     }))
   }, [])
 
@@ -350,7 +351,8 @@ export function WordLookupProvider({
       ...prev,
       deepTabs: [...prev.deepTabs, newTab],
       activeTabId: tabId,
-      showDeepDrawer: true
+      showDeepDrawer: true,
+      isDeepDrawerMinimized: false
     }))
     
     return tabId
