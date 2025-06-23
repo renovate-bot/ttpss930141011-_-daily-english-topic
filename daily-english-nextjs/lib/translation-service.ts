@@ -1,4 +1,4 @@
-import { TranslationResult } from '@/contexts/WordLookupContext'
+import { TranslationResult } from '@/stores/useWordLookupStore'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { getLanguageName } from './language-utils'
 

@@ -133,7 +133,7 @@ export default function SlideViewer({
   }, [])
 
   return (
-    <div className={`h-screen flex flex-col bg-slate-800 text-white ${isFullscreen ? 'fixed top-0 left-0 w-screen z-[9999]' : ''}`}>
+    <div className={`h-full w-full flex flex-col bg-slate-800 text-white ${isFullscreen ? 'fixed top-0 left-0 w-screen h-screen z-[9999]' : ''}`}>
       {/* Navigation Header */}
       {!isFullscreen && (
         <header className="bg-black/10 backdrop-blur-lg px-4 sm:px-8 py-2 sm:py-4 flex justify-between items-center">

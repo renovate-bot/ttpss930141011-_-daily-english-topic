@@ -110,12 +110,15 @@
     "words": "個單字",
     "detailedLearning": "詳細學習",
     "closeDrawer": "關閉抽屜",
+    "minimizeDrawer": "最小化抽屜",
+    "expandDrawer": "展開抽屜",
     "closeTab": "關閉標籤",
     "generating": "生成中...",
     "regenerate": "重新生成",
     "noContent": "沒有內容",
     "aiAssistant": "AI 助手",
     "selectTextToLearn": "選擇一些文字開始學習",
+    "selectTextToLearnDescription": "選擇並反白任何文字，然後點擊「深度分析」選項，即可開始學習該詞彙或句型的詳細解釋。",
     "shortcuts": "快捷鍵",
     "keyboardShortcuts": "Esc: 關閉 | Ctrl+Tab: 切換標籤"
   }

@@ -113,12 +113,15 @@ export interface Dictionary {
     // Deep learning drawer
     detailedLearning: string
     closeDrawer: string
+    minimizeDrawer: string
+    expandDrawer: string
     closeTab: string
     generating: string
     regenerate: string
     noContent: string
     aiAssistant: string
     selectTextToLearn: string
+    selectTextToLearnDescription: string
     shortcuts: string
     keyboardShortcuts: string
   }

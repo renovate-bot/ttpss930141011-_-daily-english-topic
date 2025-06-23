@@ -1,6 +1,6 @@
 'use client'
 
-import { WordLookupProvider } from '@/contexts/WordLookupContext'
+import { WordLookupProvider } from '@/components/word-lookup/WordLookupProvider'
 import { WordLookupManager } from '@/components/word-lookup/WordLookupManager'
 import { type Dictionary } from '@/types/dictionary'
 
@@ -120,12 +120,15 @@ const mockDictionary: Dictionary = {
     // Deep learning drawer
     detailedLearning: '詳細學習',
     closeDrawer: '關閉抽屜',
+    minimizeDrawer: '最小化抽屜',
+    expandDrawer: '展開抽屜',
     closeTab: '關閉分頁',
     generating: '生成中...',
     regenerate: '重新生成',
     noContent: '無內容',
     aiAssistant: 'AI 助手',
     selectTextToLearn: '選擇文字以開始學習',
+    selectTextToLearnDescription: '選擇並反白任何文字，然後點擊「深度分析」選項，即可開始學習該詞彙或句型的詳細解釋。',
     shortcuts: '快捷鍵',
     keyboardShortcuts: '鍵盤快捷鍵',
   },

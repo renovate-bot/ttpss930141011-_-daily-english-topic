@@ -180,12 +180,15 @@ export default function TopicGrid({ topics, lang = 'zh-TW', dictionary }: TopicG
       words: 'words',
       detailedLearning: 'Detailed Learning',
       closeDrawer: 'Close Drawer',
+      minimizeDrawer: 'Minimize Drawer',
+      expandDrawer: 'Expand Drawer',
       closeTab: 'Close Tab',
       generating: 'Generating...',
       regenerate: 'Regenerate',
       noContent: 'No Content',
       aiAssistant: 'AI Assistant',
       selectTextToLearn: 'Select some text to start learning',
+      selectTextToLearnDescription: 'Select and highlight any text, then click the Deep Analysis option to start learning the detailed explanation of the vocabulary or sentence pattern.',
       shortcuts: 'Shortcuts',
       keyboardShortcuts: 'Esc: Close | Ctrl+Tab: Switch Tab'
     }

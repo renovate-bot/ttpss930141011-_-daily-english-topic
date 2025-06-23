@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import { useWordLookup } from '@/contexts/WordLookupContext'
+import { useWordLookup } from '@/hooks/useWordLookup'
 import { 
   Globe, 
   Brain, 
@@ -20,8 +20,7 @@ export function ContextMenu({ className = '', dictionary }: ContextMenuProps) {
     activeSelection,
     hideContextMenu,
     translateText,
-    explainText,
-    openDeepDrawer
+    explainText
   } = useWordLookup()
 
   const menuRef = useRef<HTMLDivElement>(null)
@@ -85,9 +84,9 @@ export function ContextMenu({ className = '', dictionary }: ContextMenuProps) {
     if (!activeSelection) return
     
     try {
-      await explainText(activeSelection.text)
-      openDeepDrawer()
       hideContextMenu()
+      // explainText will automatically open the drawer
+      await explainText(activeSelection.text)
     } catch (error) {
       console.error('Deep explanation failed:', error)
     }
@@ -101,7 +100,7 @@ export function ContextMenu({ className = '', dictionary }: ContextMenuProps) {
     hideContextMenu()
   }
 
-  if (!showContextMenu || !activeSelection || activeSelection.isWord) {
+  if (!showContextMenu || !activeSelection) {
     return null
   }
 
@@ -132,7 +131,7 @@ export function ContextMenu({ className = '', dictionary }: ContextMenuProps) {
   return (
     <div
       ref={menuRef}
-      className={`fixed z-50 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg shadow-xl py-2 min-w-[200px] ${className}`}
+      className={`fixed z-50 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg shadow-xl py-2 w-64 max-w-xs ${className}`}
       style={{ 
         position: 'fixed',
         animation: 'slideUpFade 150ms ease-out'

@@ -110,12 +110,15 @@
     "words": "个单字",
     "detailedLearning": "详细学习",
     "closeDrawer": "关闭抽屉",
+    "minimizeDrawer": "最小化抽屉",
+    "expandDrawer": "展开抽屉",
     "closeTab": "关闭标签",
     "generating": "生成中...",
     "regenerate": "重新生成",
     "noContent": "没有内容",
     "aiAssistant": "AI 助手",
     "selectTextToLearn": "选择一些文字开始学习",
+    "selectTextToLearnDescription": "选择并反白任何文字，然后点击“深度分析”选项，即可开始学习该词汇或句型的详细解释。",
     "shortcuts": "快捷键",
     "keyboardShortcuts": "Esc: 关闭 | Ctrl+Tab: 切换标签"
   }
