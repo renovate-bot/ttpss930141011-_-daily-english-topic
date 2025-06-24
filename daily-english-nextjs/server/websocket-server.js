@@ -21,10 +21,10 @@ const handle = app.getRequestHandler()
 const connections = new Map() // userId -> connection info
 const connectionsByWebSocket = new WeakMap() // ws -> connection info
 
-// Rate limiting
+// Rate limiting - using environment variables for consistency
 const rateLimits = new Map() // userId -> { count, resetTime }
-const RATE_LIMIT_WINDOW = 60000 // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 100
+const RATE_LIMIT_WINDOW = parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000')
+const RATE_LIMIT_MAX_REQUESTS = parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100') // Higher for WebSocket
 
 /**
  * Connection info structure

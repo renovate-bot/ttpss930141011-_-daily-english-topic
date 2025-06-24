@@ -3,13 +3,11 @@
  * Implements security best practices for OpenAI Realtime API.
  */
 
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
+import { auth } from '@/auth'
 import { REALTIME_MODEL, TEACHER_VOICE } from '@/lib/realtime-config'
-
-// Rate limiting configuration
-const RATE_LIMIT_WINDOW = 60 * 1000 // 1 minute
-const RATE_LIMIT_MAX_REQUESTS = 10 // max requests per window
+import { RATE_LIMIT_CONFIG, SECURITY_HEADERS, ERROR_MESSAGES } from '@/lib/security-config'
 
 // In-memory rate limiter (use Redis in production)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
@@ -24,12 +22,12 @@ function checkRateLimit(ip: string): boolean {
   if (!limit || now > limit.resetTime) {
     rateLimitMap.set(ip, {
       count: 1,
-      resetTime: now + RATE_LIMIT_WINDOW
+      resetTime: now + RATE_LIMIT_CONFIG.WINDOW_MS
     })
     return true
   }
 
-  if (limit.count >= RATE_LIMIT_MAX_REQUESTS) {
+  if (limit.count >= RATE_LIMIT_CONFIG.MAX_REQUESTS) {
     return false
   }
 
@@ -53,9 +51,22 @@ function cleanupRateLimits() {
  * GET /api/realtime-session
  * Returns ephemeral token for WebRTC connection with production security.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
+    // 0. Check authentication using NextAuth
+    const session = await auth()
+    
+    if (process.env.NODE_ENV === 'production' && !session?.user) {
+      return NextResponse.json(
+        { error: ERROR_MESSAGES.UNAUTHORIZED },
+        { status: 401 }
+      )
+    }
+    
+    // Log session creation for authenticated user
+    if (session?.user) {
+      console.log('[Realtime Session] Authenticated user:', session.user.email)
+    }
     // 1. Get client IP for rate limiting
     const headersList = await headers()
     const forwardedFor = headersList.get('x-forwarded-for')
@@ -65,13 +76,13 @@ export async function GET(_request: NextRequest) {
     // 2. Check rate limit
     if (!checkRateLimit(clientIp)) {
       return NextResponse.json(
-        { error: 'Too many requests. Please try again later.' },
+        { error: ERROR_MESSAGES.RATE_LIMIT },
         { 
           status: 429,
           headers: {
             'Retry-After': '60',
-            'X-RateLimit-Limit': RATE_LIMIT_MAX_REQUESTS.toString(),
-            'X-RateLimit-Window': (RATE_LIMIT_WINDOW / 1000).toString()
+            'X-RateLimit-Limit': RATE_LIMIT_CONFIG.MAX_REQUESTS.toString(),
+            'X-RateLimit-Window': (RATE_LIMIT_CONFIG.WINDOW_MS / 1000).toString()
           }
         }
       )
@@ -87,18 +98,13 @@ export async function GET(_request: NextRequest) {
     if (!apiKey) {
       console.error('[Realtime Session] API key not configured')
       return NextResponse.json(
-        { error: 'Service temporarily unavailable' },
+        { error: ERROR_MESSAGES.SERVICE_UNAVAILABLE },
         { status: 503 }
       )
     }
 
-    // 5. Additional security headers
-    const securityHeaders = {
-      'X-Content-Type-Options': 'nosniff',
-      'X-Frame-Options': 'DENY',
-      'X-XSS-Protection': '1; mode=block',
-      'Referrer-Policy': 'strict-origin-when-cross-origin'
-    }
+    // 5. Use centralized security headers
+    const securityHeaders = { ...SECURITY_HEADERS }
 
     // 6. Create ephemeral session with OpenAI
     const sessionResponse = await fetch('https://api.openai.com/v1/realtime/sessions', {
@@ -123,7 +129,7 @@ export async function GET(_request: NextRequest) {
       
       // Don't expose internal errors to client
       return NextResponse.json(
-        { error: 'Failed to create session' },
+        { error: ERROR_MESSAGES.SERVICE_UNAVAILABLE },
         { status: 503, headers: securityHeaders }
       )
     }
@@ -154,7 +160,7 @@ export async function GET(_request: NextRequest) {
     console.error('[Realtime Session] Unexpected error:', error)
     
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: ERROR_MESSAGES.INTERNAL_ERROR },
       { 
         status: 500,
         headers: {
@@ -170,11 +176,11 @@ export async function GET(_request: NextRequest) {
  * POST /api/realtime-session
  * Optionally support POST for future authentication flows.
  */
-export async function POST(request: NextRequest) {
+export async function POST() {
   // In production, implement authentication here
   // const body = await request.json()
   // const { userId, sessionToken } = body
   // await validateUserSession(userId, sessionToken)
   
-  return GET(request)
+  return GET()
 }

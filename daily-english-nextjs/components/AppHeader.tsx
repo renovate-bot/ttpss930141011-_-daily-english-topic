@@ -3,7 +3,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Globe, LogIn } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
-import { SignInModal } from '@/components/SignInModal'
+import { useSession } from 'next-auth/react'
+import { useSignInModal } from '@/hooks/use-sign-in-modal'
+import { UserNav } from '@/components/auth/user-nav'
 import { type Locale } from '@/i18n-config'
 import { type Dictionary } from '@/types/dictionary'
 
@@ -39,8 +41,9 @@ export function AppHeader({ className = '', dictionary, locale }: AppHeaderProps
   const pathname = usePathname()
   
   const [showLanguageMenu, setShowLanguageMenu] = useState(false)
-  const [showSignInModal, setShowSignInModal] = useState(false)
   const languageRef = useRef<HTMLDivElement>(null)
+  const { data: session } = useSession()
+  const { open: openSignInModal } = useSignInModal()
 
 
   /**
@@ -114,23 +117,21 @@ export function AppHeader({ className = '', dictionary, locale }: AppHeaderProps
               )}
             </div>
 
-            {/* Sign In Button */}
-            <button
-              className="hidden gap-2 px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors md:flex items-center"
-              onClick={() => setShowSignInModal(true)}
-            >
-              <span>{dictionary.common.signIn}</span>
-              <LogIn className="size-4" />
-            </button>
+            {/* Sign In Button or User Nav */}
+            {session?.user ? (
+              <UserNav />
+            ) : (
+              <button
+                className="hidden gap-2 px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors md:flex items-center"
+                onClick={() => openSignInModal()}
+              >
+                <span>{dictionary.common.signIn}</span>
+                <LogIn className="size-4" />
+              </button>
+            )}
           </div>
         </div>
       </div>
-      
-      <SignInModal 
-        showSignInModal={showSignInModal}
-        setShowSignInModal={setShowSignInModal}
-        dictionary={dictionary}
-      />
     </header>
   )
 }
