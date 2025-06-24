@@ -20,6 +20,9 @@ export const {
 } = NextAuth({
   adapter: PrismaAdapter(prisma),
   
+  // Trust proxy headers in production
+  trustHost: true,
+  
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
