@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:custom": "node server.js",
     "build": "npm run validate:i18n && next build",
     "start": "next start",
+    "start:custom": "NODE_ENV=production node server.js",
     "lint": "next lint",
     "validate:i18n": "node scripts/validate-i18n.js",
     "typecheck": "tsc --noEmit"
