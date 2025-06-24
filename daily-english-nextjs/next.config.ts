@@ -16,6 +16,13 @@ const nextConfig: NextConfig = {
     // 跳過 TypeScript 檢查，因為 @types 套件在 devDependencies
     ignoreBuildErrors: true,
   },
+  // 啟用 standalone 輸出模式以優化 Docker 鏡像大小
+  output: 'standalone',
+  // 優化打包
+  experimental: {
+    // 減少服務器端運行時大小
+    serverMinification: true,
+  },
 };
 
 export default withSentryConfig(nextConfig, {
