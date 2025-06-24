@@ -38,6 +38,21 @@ function isAllowedOrigin(origin: string | null): boolean {
   return CORS_CONFIG.ALLOWED_ORIGINS.includes(origin)
 }
 
+// Routes that should not have i18n prefix
+const NON_I18N_ROUTES = [
+  '/auth',
+  '/sentry-example-page',
+  '/api/sentry-example-api',
+  '/test-word-lookup',
+  '/about',
+  '/privacy',
+  '/terms',
+]
+
+function shouldSkipI18n(pathname: string): boolean {
+  return NON_I18N_ROUTES.some(route => pathname.startsWith(route))
+}
+
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
   
@@ -69,6 +84,11 @@ export async function middleware(request: NextRequest) {
     response.headers.set('X-Request-ID', crypto.randomUUID())
 
     return response
+  }
+
+  // Skip i18n for certain routes
+  if (shouldSkipI18n(pathname)) {
+    return NextResponse.next()
   }
 
   // Handle i18n routing for non-API routes
