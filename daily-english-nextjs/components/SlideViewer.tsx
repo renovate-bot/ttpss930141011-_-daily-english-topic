@@ -5,22 +5,43 @@ import { marked } from 'marked'
 import { Topic, Slide } from '@/lib/topics'
 import { WordLookupManager } from '@/components/word-lookup/WordLookupManager'
 import { type Dictionary } from '@/types/dictionary'
+import { VoiceCallButton, VoiceCallInterface } from '@/components/voice-call/VoiceCallButton'
+import { useRealtimeTeacher } from '@/hooks/useRealtimeTeacher'
 
 interface SlideViewerProps {
   topic: Topic
   interactive?: boolean
   theme?: 'light' | 'dark'
   dictionary: Dictionary
+  enableVoiceCall?: boolean
 }
 
 export default function SlideViewer({
   topic,
-  dictionary
+  dictionary,
+  enableVoiceCall = true
 }: SlideViewerProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [touchStart, setTouchStart] = useState<number | null>(null)
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const [showVoiceInterface, setShowVoiceInterface] = useState(false)
+  
+  const currentSlideData = topic.slides[currentSlide]
+  
+  const {
+    isCallActive,
+    connectionStatus,
+    transcript,
+    isTeacherSpeaking,
+    audioLevel,
+    startCall,
+    endCall
+  } = useRealtimeTeacher({
+    topic,
+    slideIndex: currentSlide,
+    slideContent: currentSlideData.content
+  })
 
   // Define navigation functions first
   const nextSlide = useCallback(() => {
@@ -119,8 +140,6 @@ export default function SlideViewer({
     return <div dangerouslySetInnerHTML={{ __html: html }} />
   }
 
-  const currentSlideData = topic.slides[currentSlide]
-
   // Sync fullscreen state with external fullscreen changes
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -144,6 +163,20 @@ export default function SlideViewer({
             </div>
           </div>
           <div className="flex gap-2 sm:gap-4 flex-shrink-0">
+            {enableVoiceCall && (
+              <VoiceCallButton
+                isFullscreen={false}
+                isCallActive={isCallActive}
+                onCallStart={async () => {
+                  setShowVoiceInterface(true)
+                  await startCall()
+                }}
+                onCallEnd={() => {
+                  setShowVoiceInterface(false)
+                  endCall()
+                }}
+              />
+            )}
             <button 
               onClick={toggleFullscreen} 
               className="bg-white/10 hover:bg-white/20 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-lg transition-all duration-200 border-none cursor-pointer text-xs sm:text-sm"
@@ -170,8 +203,8 @@ export default function SlideViewer({
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <div className="h-full p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-center overflow-y-auto">
-              <div className="slide-content text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
+            <div className="h-full p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col overflow-hidden">
+              <div className="slide-content text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed flex-1 min-h-0">
                 {renderSlideContent(currentSlideData)}
               </div>
             </div>
@@ -265,6 +298,23 @@ export default function SlideViewer({
             ← → Navigation | F Fullscreen | ESC Exit
           </div>
         </div>
+      )}
+      
+      {/* Voice Call Interface */}
+      {showVoiceInterface && isCallActive && (
+        <VoiceCallInterface
+          connectionStatus={connectionStatus}
+          audioLevel={audioLevel}
+          transcript={transcript}
+          isTeacherSpeaking={isTeacherSpeaking}
+          isMuted={false}
+          onMute={() => {}}
+          onUnmute={() => {}}
+          onEnd={() => {
+            setShowVoiceInterface(false)
+            endCall()
+          }}
+        />
       )}
     </div>
   )

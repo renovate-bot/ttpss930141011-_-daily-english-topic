@@ -8,6 +8,76 @@ body {
   font-family: var(--font-inter), "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "MS Gothic", "Malgun Gothic", sans-serif;
 }
 
+/* Slide content optimization */
+.slide-content {
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.slide-content h1,
+.slide-content h2,
+.slide-content h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.slide-content ul,
+.slide-content ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  max-width: 100%;
+}
+
+.slide-content li {
+  margin-bottom: 0.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Prevent content cutoff for vocabulary lists */
+.slide-content strong {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive font sizes for better fit */
+@media (max-height: 700px) {
+  .slide-content {
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  .slide-content h2 {
+    font-size: 1.25rem !important;
+  }
+  
+  .slide-content h3 {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Better scrollbar for overflow content */
+.slide-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.slide-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.slide-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.slide-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
