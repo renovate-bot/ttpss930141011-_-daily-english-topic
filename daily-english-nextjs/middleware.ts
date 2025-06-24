@@ -38,7 +38,7 @@ function isAllowedOrigin(origin: string | null): boolean {
   return CORS_CONFIG.ALLOWED_ORIGINS.includes(origin)
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
   
   // Handle API routes security
@@ -89,5 +89,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   // Updated matcher to include API routes for security
-  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico).*)',
+    '/api/realtime-session',
+  ],
 }

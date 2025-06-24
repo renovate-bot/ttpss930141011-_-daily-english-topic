@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { SessionProvider } from "@/components/providers/session-provider";
+import { ModalProvider } from "@/components/providers/modal-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -35,7 +37,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} text-white`}>
-        {children}
+        <SessionProvider>
+          {children}
+          <ModalProvider />
+        </SessionProvider>
       </body>
     </html>
   );
