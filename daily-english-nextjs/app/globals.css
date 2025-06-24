@@ -8,6 +8,11 @@ body {
   font-family: var(--font-inter), "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "MS Gothic", "Malgun Gothic", sans-serif;
 }
 
+/* Prevent layout shift when scrollbar appears/disappears */
+html {
+  scrollbar-gutter: stable;
+}
+
 /* Slide content optimization */
 .slide-content {
   max-height: 100%;

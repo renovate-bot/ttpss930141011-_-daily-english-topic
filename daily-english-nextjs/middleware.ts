@@ -47,6 +47,7 @@ const NON_I18N_ROUTES = [
   '/about',
   '/privacy',
   '/terms',
+  '/monitoring', // Sentry tunnel route
 ]
 
 function shouldSkipI18n(pathname: string): boolean {

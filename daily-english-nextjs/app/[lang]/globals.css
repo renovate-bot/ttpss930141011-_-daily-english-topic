@@ -50,6 +50,8 @@
 
 body {
   overflow-x: hidden;
+  /* Prevent layout shift when scrollbar appears/disappears */
+  scrollbar-gutter: stable;
 }
 
 /* Custom Scrollbar */

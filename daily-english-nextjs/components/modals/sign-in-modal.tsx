@@ -9,11 +9,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 import {
-  Dialog,
+  DialogWithScrollFix as Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@/components/ui/dialog-with-scroll-fix'
 import { Button } from '@/components/ui/button'
 
 interface SignInModalProps {
