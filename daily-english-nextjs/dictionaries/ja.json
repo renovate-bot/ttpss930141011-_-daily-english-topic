@@ -28,7 +28,11 @@
     "comingSoon": "近日公開",
     "darkMode": "ダークモード",
     "notifications": "通知設定",
-    "learningPreferences": "学習設定"
+    "learningPreferences": "学習設定",
+    "upgrade": "アップグレード",
+    "currentPlan": "現在のプラン",
+    "manageBilling": "請求管理",
+    "viewPlans": "プランを見る"
   },
   "homepage": {
     "hero": {
@@ -121,5 +125,118 @@
     "selectTextToLearnDescription": "テキストを選択してハイライトし、「詳細分析」オプションをクリックして、語彙や文型の詳細な説明の学習を開始してください。",
     "shortcuts": "ショートカット",
     "keyboardShortcuts": "Esc: 閉じる | Ctrl+Tab: タブ切り替え"
+  },
+  "pricing": {
+    "title": "プランを選択",
+    "subtitle": "すべての機能をアンロックして、英語学習体験を向上させましょう",
+    "monthly": "月額",
+    "yearly": "年額",
+    "save": "節約",
+    "mostPopular": "最も人気",
+    "free": {
+      "name": "無料版",
+      "price": "$0",
+      "period": "/月",
+      "description": "英語学習の旅を始めましょう",
+      "features": [
+        "毎日3つの学習トピック",
+        "基本的な語彙検索",
+        "標準学習ツール",
+        "コミュニティサポート"
+      ],
+      "cta": "始める"
+    },
+    "starter": {
+      "name": "スターター",
+      "price": "$9.99",
+      "period": "/月",
+      "description": "真剣な学習者に最適",
+      "features": [
+        "無制限の学習トピック",
+        "高度な語彙分析",
+        "AI駆動の詳細な説明",
+        "学習進捗追跡",
+        "オフラインダウンロード",
+        "優先サポート"
+      ],
+      "cta": "今すぐアップグレード"
+    },
+    "pro": {
+      "name": "プロ",
+      "price": "$19.99",
+      "period": "/月",
+      "description": "完全な学習体験",
+      "features": [
+        "スターターのすべての機能",
+        "パーソナライズされた学習プラン",
+        "1対1のチューターセッション（月に2回）",
+        "専用学習コミュニティ",
+        "証明書とアチーブメント",
+        "APIアクセス"
+      ],
+      "cta": "プロになる"
+    },
+    "features": {
+      "title": "すべてのプランに含まれる",
+      "list": [
+        "インタラクティブな学習コンテンツ",
+        "実際の会話練習",
+        "クロスプラットフォーム同期",
+        "定期的なコンテンツ更新"
+      ]
+    },
+    "faq": {
+      "title": "よくある質問",
+      "q1": "いつでもサブスクリプションをキャンセルできますか？",
+      "a1": "はい、いつでも追加料金なしでサブスクリプションをキャンセルできます。",
+      "q2": "返金はありますか？",
+      "a2": "30日間の返金保証を提供しています。",
+      "q3": "プランをアップグレードまたはダウングレードするには？",
+      "a3": "アカウント設定からいつでもサブスクリプションプランを変更できます。"
+    }
+  },
+  "billing": {
+    "title": "請求とサブスクリプション",
+    "subscription": {
+      "title": "現在のサブスクリプション",
+      "status": "ステータス",
+      "active": "アクティブ",
+      "inactive": "非アクティブ",
+      "cancelled": "キャンセル済み",
+      "plan": "プラン",
+      "nextBilling": "次回請求日",
+      "amount": "金額",
+      "managePlan": "プラン管理",
+      "cancelPlan": "プランキャンセル",
+      "reactivate": "再アクティベート"
+    },
+    "paymentMethod": {
+      "title": "支払い方法",
+      "card": "カード",
+      "endingIn": "下4桁",
+      "expires": "有効期限",
+      "update": "支払い方法を更新",
+      "add": "支払い方法を追加",
+      "remove": "削除"
+    },
+    "billingHistory": {
+      "title": "請求履歴",
+      "date": "日付",
+      "description": "説明",
+      "amount": "金額",
+      "status": "ステータス",
+      "paid": "支払い済み",
+      "pending": "保留中",
+      "failed": "失敗",
+      "download": "請求書をダウンロード",
+      "noHistory": "まだ請求履歴がありません"
+    },
+    "actions": {
+      "updatePayment": "支払い情報を更新",
+      "changePlan": "プラン変更",
+      "cancelSubscription": "サブスクリプションをキャンセル",
+      "confirmCancel": "本当にキャンセルしますか？",
+      "cancelWarning": "現在の請求期間の終了時にプレミアム機能へのアクセスを失います。"
+    }
   }
 }

@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import type { Dictionary } from "@/types/dictionary";
 
 interface BillingInfoProps {
   subscriptionPlan: {
@@ -10,9 +11,10 @@ interface BillingInfoProps {
     isCanceled: boolean;
     stripeCurrentPeriodEnd: number;
   };
+  dict: Dictionary;
 }
 
-export function BillingInfo({ subscriptionPlan }: BillingInfoProps) {
+export function BillingInfo({ subscriptionPlan, dict }: BillingInfoProps) {
   const formatDate = (timestamp: number) => {
     return new Date(timestamp).toLocaleDateString("zh-TW", {
       year: "numeric",
@@ -24,35 +26,35 @@ export function BillingInfo({ subscriptionPlan }: BillingInfoProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>訂閱狀態</CardTitle>
+        <CardTitle>{dict.billing.subscription.title}</CardTitle>
         <CardDescription>
-          管理您的訂閱方案和帳單資訊
+          {dict.billing.subscription.description}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium">目前方案</span>
+          <span className="text-sm font-medium">{dict.billing.subscription.currentPlan}</span>
           <Badge variant={subscriptionPlan.isPro ? "default" : "secondary"}>
-            {subscriptionPlan.plan === "pro" ? "Pro" : "免費"}
+            {subscriptionPlan.plan === "pro" ? dict.pricing.planPro.name : dict.pricing.planFree.name}
           </Badge>
         </div>
 
         {subscriptionPlan.isPro && (
           <>
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">訂閱狀態</span>
+              <span className="text-sm font-medium">{dict.billing.subscription.status}</span>
               <span className="text-sm">
                 {subscriptionPlan.isCanceled ? (
-                  <Badge variant="destructive">已取消</Badge>
+                  <Badge variant="destructive">{dict.billing.subscription.canceled}</Badge>
                 ) : (
-                  <Badge variant="default">活躍</Badge>
+                  <Badge variant="default">{dict.billing.subscription.active}</Badge>
                 )}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">
-                {subscriptionPlan.isCanceled ? "訂閱結束日期" : "下次扣款日期"}
+                {subscriptionPlan.isCanceled ? dict.billing.subscription.endsOn : dict.billing.subscription.nextBilling}
               </span>
               <span className="text-sm">
                 {formatDate(subscriptionPlan.stripeCurrentPeriodEnd)}
@@ -64,7 +66,7 @@ export function BillingInfo({ subscriptionPlan }: BillingInfoProps) {
         {!subscriptionPlan.isPro && (
           <div className="rounded-lg bg-muted p-4">
             <p className="text-sm text-muted-foreground">
-              升級至 Pro 方案以解鎖所有進階功能，包括無限學習主題、AI 對話練習等。
+              {dict.billing.subscription.upgradePrompt}
             </p>
           </div>
         )}

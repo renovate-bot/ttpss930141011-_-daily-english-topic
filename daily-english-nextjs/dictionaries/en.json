@@ -28,7 +28,11 @@
     "comingSoon": "Coming Soon",
     "darkMode": "Dark Mode",
     "notifications": "Notifications",
-    "learningPreferences": "Learning Preferences"
+    "learningPreferences": "Learning Preferences",
+    "upgrade": "Upgrade",
+    "currentPlan": "Current Plan",
+    "manageBilling": "Manage Billing",
+    "viewPlans": "View Plans"
   },
   "homepage": {
     "hero": {
@@ -121,5 +125,118 @@
     "selectTextToLearnDescription": "Select and highlight any text, then click the 'Deep Analysis' option to start learning the detailed explanation of the vocabulary or sentence pattern.",
     "shortcuts": "Shortcuts",
     "keyboardShortcuts": "Esc: Close | Ctrl+Tab: Switch Tab"
+  },
+  "pricing": {
+    "title": "Choose Your Plan",
+    "subtitle": "Unlock all features and boost your English learning experience",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save": "Save",
+    "mostPopular": "Most Popular",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/month",
+      "description": "Start your English learning journey",
+      "features": [
+        "3 daily learning topics",
+        "Basic vocabulary lookup",
+        "Standard learning tools",
+        "Community support"
+      ],
+      "cta": "Get Started"
+    },
+    "starter": {
+      "name": "Starter",
+      "price": "$9.99",
+      "period": "/month",
+      "description": "Perfect for serious learners",
+      "features": [
+        "Unlimited learning topics",
+        "Advanced vocabulary analysis",
+        "AI-powered deep explanations",
+        "Learning progress tracking",
+        "Offline downloads",
+        "Priority support"
+      ],
+      "cta": "Upgrade Now"
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "$19.99",
+      "period": "/month",
+      "description": "Complete learning experience",
+      "features": [
+        "Everything in Starter",
+        "Personalized learning plans",
+        "1-on-1 tutor sessions (2/month)",
+        "Exclusive learning community",
+        "Certificates & achievements",
+        "API access"
+      ],
+      "cta": "Go Pro"
+    },
+    "features": {
+      "title": "All Plans Include",
+      "list": [
+        "Interactive learning content",
+        "Real conversation practice",
+        "Cross-platform sync",
+        "Regular content updates"
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "Can I cancel my subscription anytime?",
+      "a1": "Yes, you can cancel your subscription at any time without any extra charges.",
+      "q2": "Do you offer refunds?",
+      "a2": "We offer a 30-day money-back guarantee, no questions asked.",
+      "q3": "How do I upgrade or downgrade my plan?",
+      "a3": "You can change your subscription plan anytime from your account settings."
+    }
+  },
+  "billing": {
+    "title": "Billing & Subscription",
+    "subscription": {
+      "title": "Current Subscription",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "cancelled": "Cancelled",
+      "plan": "Plan",
+      "nextBilling": "Next billing date",
+      "amount": "Amount",
+      "managePlan": "Manage Plan",
+      "cancelPlan": "Cancel Plan",
+      "reactivate": "Reactivate"
+    },
+    "paymentMethod": {
+      "title": "Payment Method",
+      "card": "Card",
+      "endingIn": "ending in",
+      "expires": "Expires",
+      "update": "Update Payment Method",
+      "add": "Add Payment Method",
+      "remove": "Remove"
+    },
+    "billingHistory": {
+      "title": "Billing History",
+      "date": "Date",
+      "description": "Description",
+      "amount": "Amount",
+      "status": "Status",
+      "paid": "Paid",
+      "pending": "Pending",
+      "failed": "Failed",
+      "download": "Download Invoice",
+      "noHistory": "No billing history yet"
+    },
+    "actions": {
+      "updatePayment": "Update Payment Information",
+      "changePlan": "Change Plan",
+      "cancelSubscription": "Cancel Subscription",
+      "confirmCancel": "Are you sure you want to cancel?",
+      "cancelWarning": "You'll lose access to premium features at the end of your current billing period."
+    }
   }
 }

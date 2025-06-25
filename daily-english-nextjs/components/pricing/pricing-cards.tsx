@@ -6,16 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { pricingData } from "@/config/subscriptions";
 import { generateUserStripe } from "@/actions/generate-user-stripe";
 import { useSignInModal } from "@/hooks/use-sign-in-modal";
+import type { Dictionary } from "@/types/dictionary";
 
 interface PricingCardsProps {
   userId?: string;
   subscriptionPlan?: any;
+  dict: Dictionary;
 }
 
-export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
+export function PricingCards({ userId, subscriptionPlan, dict }: PricingCardsProps) {
   const router = useRouter();
   const signInModal = useSignInModal();
   const [billingPeriod, setBillingPeriod] = useState<"monthly" | "yearly">("monthly");
@@ -56,7 +57,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
-            月付
+            {dict.pricing.billingMonthly}
           </button>
           <button
             onClick={() => setBillingPeriod("yearly")}
@@ -67,46 +68,46 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
-            年付
+            {dict.pricing.billingYearly}
             <Badge className="ml-2 bg-green-500/10 text-green-500 hover:bg-green-500/10">
-              省 20%
+              {dict.pricing.save20}
             </Badge>
           </button>
         </div>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 max-w-4xl mx-auto">
-        {pricingData.map((plan) => (
+        {[dict.pricing.planFree, dict.pricing.planPro].map((plan, index) => (
           <Card
-            key={plan.plan}
+            key={index}
             className={cn(
               "relative rounded-2xl p-8 shadow-sm transition-all hover:shadow-md",
-              plan.plan === "Pro" && "border-2 border-primary shadow-lg"
+              index === 1 && "border-2 border-primary shadow-lg"
             )}
           >
-            {plan.plan === "Pro" && (
+            {index === 1 && (
               <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground">
-                最受歡迎
+                {dict.pricing.mostPopular}
               </Badge>
             )}
             
             <div className="mb-8">
-              <h3 className="text-2xl font-bold">{plan.plan}</h3>
+              <h3 className="text-2xl font-bold">{plan.name}</h3>
               <p className="mt-2 text-muted-foreground">{plan.tagline}</p>
               
               <div className="mt-6">
-                {plan.plan === "Free" ? (
+                {index === 0 ? (
                   <div className="flex items-baseline">
-                    <span className="text-5xl font-bold">$0</span>
-                    <span className="ml-2 text-muted-foreground">/月</span>
+                    <span className="text-5xl font-bold">{plan.price}</span>
+                    <span className="ml-2 text-muted-foreground">/{dict.pricing.perMonth}</span>
                   </div>
                 ) : (
                   <div className="flex items-baseline">
                     <span className="text-5xl font-bold">
-                      ${billingPeriod === "monthly" ? "15" : "144"}
+                      {billingPeriod === "monthly" ? plan.price : plan.yearlyPrice}
                     </span>
                     <span className="ml-2 text-muted-foreground">
-                      /{billingPeriod === "monthly" ? "月" : "年"}
+                      /{billingPeriod === "monthly" ? dict.pricing.perMonth : dict.pricing.perYear}
                     </span>
                   </div>
                 )}
@@ -138,7 +139,7 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                 className="w-full"
                 disabled={subscriptionPlan?.plan === "free"}
               >
-                {subscriptionPlan?.plan === "free" ? "目前方案" : "選擇免費方案"}
+                {subscriptionPlan?.plan === "free" ? dict.common.currentPlan : plan.cta}
               </Button>
             ) : (
               <Button
@@ -152,10 +153,10 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
                 disabled={isLoading || subscriptionPlan?.plan === "pro"}
               >
                 {subscriptionPlan?.plan === "pro" 
-                  ? "目前方案" 
+                  ? dict.common.currentPlan 
                   : isLoading 
-                  ? "處理中..." 
-                  : "升級至 Pro"}
+                  ? dict.common.loading 
+                  : plan.cta}
               </Button>
             )}
           </Card>

@@ -1,12 +1,15 @@
 import { auth } from "@/auth";
 import { getUserSubscriptionPlan } from "@/lib/subscription";
 import { PricingCards } from "@/components/pricing/pricing-cards";
+import { getDictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/i18n-config";
 
 export default async function PricingPage({
   params,
 }: {
-  params: { lang: string };
+  params: { lang: Locale };
 }) {
+  const dict = await getDictionary(params.lang);
   const session = await auth();
   let subscriptionPlan = null;
 
@@ -20,10 +23,10 @@ export default async function PricingPage({
         <section className="pt-24 pb-12">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              選擇最適合您的學習方案
+              {dict.pricing.title}
             </h1>
             <p className="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto">
-              無論您是英文初學者還是進階學習者，我們都有適合您的學習方案
+              {dict.pricing.subtitle}
             </p>
           </div>
         </section>
@@ -32,6 +35,7 @@ export default async function PricingPage({
           <PricingCards
             userId={session?.user?.id}
             subscriptionPlan={subscriptionPlan}
+            dict={dict}
           />
         </section>
       </main>

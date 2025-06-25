@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { generateUserStripe } from "@/actions/generate-user-stripe";
 import { openCustomerPortal } from "@/actions/open-customer-portal";
+import type { Dictionary } from "@/types/dictionary";
 
 interface BillingFormButtonProps {
   subscriptionPlan: {
@@ -12,9 +13,10 @@ interface BillingFormButtonProps {
     isCanceled: boolean;
     stripeCustomerId?: string | null;
   };
+  dict: Dictionary;
 }
 
-export function BillingFormButton({ subscriptionPlan }: BillingFormButtonProps) {
+export function BillingFormButton({ subscriptionPlan, dict }: BillingFormButtonProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,10 +52,10 @@ export function BillingFormButton({ subscriptionPlan }: BillingFormButtonProps) 
       className="w-full sm:w-auto"
     >
       {isLoading
-        ? "處理中..."
+        ? dict.common.loading
         : subscriptionPlan.isPro
-        ? "管理訂閱"
-        : "升級至 Pro"}
+        ? dict.billing.managePlan
+        : dict.common.upgrade}
     </Button>
   );
 }

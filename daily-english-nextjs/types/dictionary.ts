@@ -29,6 +29,10 @@ export interface Dictionary {
     darkMode: string
     notifications: string
     learningPreferences: string
+    upgrade: string
+    currentPlan: string
+    manageBilling: string
+    viewPlans: string
   }
   homepage: {
     hero: {
@@ -124,5 +128,47 @@ export interface Dictionary {
     selectTextToLearnDescription: string
     shortcuts: string
     keyboardShortcuts: string
+  }
+  pricing: {
+    title: string
+    subtitle: string
+    billingMonthly: string
+    billingYearly: string
+    save20: string
+    mostPopular: string
+    perMonth: string
+    perYear: string
+    planFree: {
+      name: string
+      price: string
+      tagline: string
+      features: string[]
+      cta: string
+    }
+    planPro: {
+      name: string
+      price: string
+      yearlyPrice: string
+      tagline: string
+      features: string[]
+      cta: string
+    }
+  }
+  billing: {
+    title: string
+    needHelp: string
+    contactSupport: string
+    managePlan: string
+    subscription: {
+      title: string
+      description: string
+      currentPlan: string
+      status: string
+      active: string
+      canceled: string
+      nextBilling: string
+      endsOn: string
+      upgradePrompt: string
+    }
   }
 }

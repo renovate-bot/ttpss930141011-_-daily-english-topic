@@ -28,7 +28,11 @@
     "comingSoon": "即將推出",
     "darkMode": "深色模式",
     "notifications": "通知設定",
-    "learningPreferences": "學習偏好"
+    "learningPreferences": "學習偏好",
+    "upgrade": "升級",
+    "currentPlan": "目前方案",
+    "manageBilling": "管理帳單",
+    "viewPlans": "查看方案"
   },
   "homepage": {
     "hero": {
@@ -121,5 +125,118 @@
     "selectTextToLearnDescription": "選擇並反白任何文字，然後點擊「深度分析」選項，即可開始學習該詞彙或句型的詳細解釋。",
     "shortcuts": "快捷鍵",
     "keyboardShortcuts": "Esc: 關閉 | Ctrl+Tab: 切換標籤"
+  },
+  "pricing": {
+    "title": "選擇您的方案",
+    "subtitle": "解鎖所有功能，提升您的英語學習體驗",
+    "monthly": "月付",
+    "yearly": "年付",
+    "save": "節省",
+    "mostPopular": "最受歡迎",
+    "free": {
+      "name": "免費版",
+      "price": "$0",
+      "period": "/月",
+      "description": "開始您的英語學習之旅",
+      "features": [
+        "每日 3 個學習主題",
+        "基礎詞彙查詢",
+        "標準學習工具",
+        "社群支援"
+      ],
+      "cta": "開始使用"
+    },
+    "starter": {
+      "name": "入門版",
+      "price": "$9.99",
+      "period": "/月",
+      "description": "適合認真學習者",
+      "features": [
+        "無限制學習主題",
+        "進階詞彙分析",
+        "AI 驅動深度解釋",
+        "學習進度追蹤",
+        "離線下載",
+        "優先客服支援"
+      ],
+      "cta": "立即升級"
+    },
+    "pro": {
+      "name": "專業版",
+      "price": "$19.99",
+      "period": "/月",
+      "description": "完整的學習體驗",
+      "features": [
+        "入門版所有功能",
+        "個人化學習計畫",
+        "1對1 導師諮詢（每月2次）",
+        "專屬學習社群",
+        "證書與成就系統",
+        "API 存取權限"
+      ],
+      "cta": "成為專業版用戶"
+    },
+    "features": {
+      "title": "所有方案都包含",
+      "list": [
+        "互動式學習內容",
+        "真實對話練習",
+        "跨平台同步",
+        "定期內容更新"
+      ]
+    },
+    "faq": {
+      "title": "常見問題",
+      "q1": "我可以隨時取消訂閱嗎？",
+      "a1": "是的，您可以隨時取消訂閱，不會產生額外費用。",
+      "q2": "是否支援退款？",
+      "a2": "我們提供 30 天無條件退款保證。",
+      "q3": "如何升級或降級方案？",
+      "a3": "您可以在帳戶設定中隨時更改您的訂閱方案。"
+    }
+  },
+  "billing": {
+    "title": "帳單與訂閱",
+    "subscription": {
+      "title": "目前訂閱",
+      "status": "狀態",
+      "active": "使用中",
+      "inactive": "未啟用",
+      "cancelled": "已取消",
+      "plan": "方案",
+      "nextBilling": "下次帳單日期",
+      "amount": "金額",
+      "managePlan": "管理方案",
+      "cancelPlan": "取消方案",
+      "reactivate": "重新啟用"
+    },
+    "paymentMethod": {
+      "title": "付款方式",
+      "card": "信用卡",
+      "endingIn": "尾號",
+      "expires": "到期日",
+      "update": "更新付款方式",
+      "add": "新增付款方式",
+      "remove": "移除"
+    },
+    "billingHistory": {
+      "title": "帳單記錄",
+      "date": "日期",
+      "description": "描述",
+      "amount": "金額",
+      "status": "狀態",
+      "paid": "已付款",
+      "pending": "待付款",
+      "failed": "付款失敗",
+      "download": "下載發票",
+      "noHistory": "暫無帳單記錄"
+    },
+    "actions": {
+      "updatePayment": "更新付款資訊",
+      "changePlan": "變更方案",
+      "cancelSubscription": "取消訂閱",
+      "confirmCancel": "確定要取消訂閱嗎？",
+      "cancelWarning": "取消後，您將在當前計費週期結束時失去專業版功能。"
+    }
   }
 }
