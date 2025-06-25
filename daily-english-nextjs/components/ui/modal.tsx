@@ -1,11 +1,12 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
+// import { useRouter } from "next/router";
 import { Drawer } from "vaul";
 
 import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface ModalProps {
   children: React.ReactNode;
@@ -17,47 +18,6 @@ interface ModalProps {
   preventDefaultClose?: boolean;
 }
 
-/**
- * Custom Dialog implementation that prevents scroll lock
- */
-function DialogNoScrollLock({ children, open, onOpenChange }: {
-  children: React.ReactNode;
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
-}) {
-  useEffect(() => {
-    if (!open) return;
-
-    // Save original body style
-    const originalStyle = document.body.style.cssText;
-
-    // Override Radix UI's modifications
-    const overrideBodyStyles = () => {
-      document.body.style.overflow = 'auto';
-      document.body.style.overflowY = 'scroll';
-      document.body.style.paddingRight = '';
-    };
-    
-    // Apply immediately and after a delay to ensure it sticks
-    overrideBodyStyles();
-    const timer = setTimeout(overrideBodyStyles, 10);
-    const timer2 = setTimeout(overrideBodyStyles, 50);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(timer2);
-      // Restore original style
-      document.body.style.cssText = originalStyle;
-    };
-  }, [open]);
-
-  return (
-    <DialogPrimitive.Root open={open} onOpenChange={onOpenChange}>
-      {children}
-    </DialogPrimitive.Root>
-  );
-}
-
 export function Modal({
   children,
   className,
@@ -67,22 +27,26 @@ export function Modal({
   desktopOnly,
   preventDefaultClose,
 }: ModalProps) {
+  // const router = useRouter();
+
   const closeModal = ({ dragged }: { dragged?: boolean } = {}) => {
     if (preventDefaultClose && !dragged) {
       return;
     }
     // fire onClose event if provided
-    if (onClose) {
-      onClose();
-    }
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    onClose && onClose();
 
     // if setShowModal is defined, use it to close modal
     if (setShowModal) {
       setShowModal(false);
     }
+    // else, this is intercepting route @modal
+    // else {
+    // router.back();
+    // }
   };
-  
-  const isMobile = useMediaQuery('(max-width: 640px)');
+  const { isMobile } = useMediaQuery();
 
   if (isMobile && !desktopOnly) {
     return (
@@ -112,9 +76,8 @@ export function Modal({
       </Drawer.Root>
     );
   }
-  
   return (
-    <DialogNoScrollLock
+    <Dialog
       open={setShowModal ? showModal : true}
       onOpenChange={(open) => {
         if (!open) {
@@ -122,19 +85,16 @@ export function Modal({
         }
       }}
     >
-      <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50" />
-        <DialogPrimitive.Content
-          onOpenAutoFocus={(e) => e.preventDefault()}
-          onCloseAutoFocus={(e) => e.preventDefault()}
-          className={cn(
-            "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-0 shadow-lg duration-200 sm:max-w-lg overflow-hidden md:max-w-md md:rounded-2xl md:border",
-            className,
-          )}
-        >
-          {children}
-        </DialogPrimitive.Content>
-      </DialogPrimitive.Portal>
-    </DialogNoScrollLock>
+      <DialogContent
+        onOpenAutoFocus={(e) => e.preventDefault()}
+        onCloseAutoFocus={(e) => e.preventDefault()}
+        className={cn(
+          "overflow-hidden p-0 md:max-w-md md:rounded-2xl md:border",
+          className,
+        )}
+      >
+        {children}
+      </DialogContent>
+    </Dialog>
   );
 }
