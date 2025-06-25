@@ -5,20 +5,14 @@
 
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
+import { useState, Dispatch, SetStateAction } from 'react'
 import { signIn } from 'next-auth/react'
-import {
-  DialogWithScrollFix as Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog-with-scroll-fix'
+import { Modal } from '@/components/ui/modal'
 import { Button } from '@/components/ui/button'
 
 interface SignInModalProps {
   showSignInModal: boolean
-  setShowSignInModal: (show: boolean) => void
+  setShowSignInModal: Dispatch<SetStateAction<boolean>>
 }
 
 /**
@@ -32,23 +26,19 @@ export function SignInModal({
   const [signInClicked, setSignInClicked] = useState(false)
 
   return (
-    <Dialog open={showSignInModal} onOpenChange={setShowSignInModal}>
-      <DialogContent className="sm:max-w-md p-0 gap-0">
-        <DialogHeader className="sr-only">
-          <DialogTitle>Sign In</DialogTitle>
-        </DialogHeader>
-        
-        <div className="p-6 space-y-6">
-          <div className="text-center">
-            <h2 className="text-2xl font-semibold tracking-tight">Welcome back</h2>
-            <p className="text-sm text-muted-foreground mt-1">Sign in to continue learning</p>
-          </div>
+    <Modal showModal={showSignInModal} setShowModal={setShowSignInModal}>
+      <div className="w-full">
+        <div className="flex flex-col items-center justify-center space-y-3 border-b bg-background px-4 py-6 pt-8 text-center md:px-16">
+          <h3 className="font-urban text-2xl font-bold">Welcome back</h3>
+          <p className="text-sm text-muted-foreground">
+            Sign in to continue learning
+          </p>
+        </div>
 
-          <div className="space-y-3">
+        <div className="flex flex-col space-y-4 bg-secondary/50 px-4 py-8 md:px-16">
             <Button
               disabled={signInClicked}
               variant="outline"
-              size="lg"
               className="relative w-full h-12 font-medium"
               onClick={() => {
                 setSignInClicked(true)
@@ -60,7 +50,7 @@ export function SignInModal({
               ) : (
                 <>
                   <svg
-                    className="absolute left-4 h-5 w-5"
+                    className="mr-2 h-5 w-5"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -88,7 +78,6 @@ export function SignInModal({
 
             <Button
               disabled={signInClicked}
-              size="lg"
               className="relative w-full h-12 font-medium bg-[#24292e] text-white hover:bg-[#24292e]/90"
               onClick={() => {
                 setSignInClicked(true)
@@ -100,7 +89,7 @@ export function SignInModal({
               ) : (
                 <>
                   <svg
-                    className="absolute left-4 h-5 w-5"
+                    className="mr-2 h-5 w-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
@@ -115,27 +104,9 @@ export function SignInModal({
                 </>
               )}
             </Button>
-          </div>
-
-          <p className="text-center text-xs text-muted-foreground">
-            By continuing, you agree to our{' '}
-            <Link
-              href="/terms"
-              className="underline underline-offset-2 hover:text-foreground"
-            >
-              Terms
-            </Link>{' '}
-            &{' '}
-            <Link
-              href="/privacy"
-              className="underline underline-offset-2 hover:text-foreground"
-            >
-              Privacy
-            </Link>
-          </p>
         </div>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </Modal>
   )
 }
 

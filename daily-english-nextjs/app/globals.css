@@ -6,12 +6,9 @@
 /* CJK font support */
 body {
   font-family: var(--font-inter), "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "MS Gothic", "Malgun Gothic", sans-serif;
+  min-height: 100vh;
 }
 
-/* Prevent layout shift when scrollbar appears/disappears */
-html {
-  scrollbar-gutter: stable;
-}
 
 /* Slide content optimization */
 .slide-content {
@@ -130,6 +127,12 @@ html {
 
 body {
   overflow-x: hidden;
+}
+
+/* Always show scrollbar to prevent layout shift */
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 
 /* Notion-style text selection */
