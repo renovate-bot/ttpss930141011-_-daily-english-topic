@@ -39,7 +39,7 @@ export function SignInModal({
             <Button
               disabled={signInClicked}
               variant="outline"
-              className="relative w-full h-12 font-medium"
+              className="relative w-full h-12 font-medium text-foreground"
               onClick={() => {
                 setSignInClicked(true)
                 signIn('google', { callbackUrl: '/' })

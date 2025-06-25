@@ -129,10 +129,30 @@ body {
   overflow-x: hidden;
 }
 
-/* Always show scrollbar to prevent layout shift */
+/* Always show vertical scrollbar to prevent layout shift */
 html {
   overflow-y: scroll;
+  /* For modern browsers that support scrollbar-gutter */
   scrollbar-gutter: stable;
+}
+
+/* Force scrollbar to always be visible */
+body {
+  overflow-y: scroll !important;
+  overflow-x: hidden;
+}
+
+/* Override Radix UI Dialog inline styles */
+body[style*="overflow: hidden"] {
+  overflow-y: scroll !important;
+}
+
+/* Ensure the scrollbar space is always reserved */
+@supports (scrollbar-gutter: stable) {
+  html {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
 }
 
 /* Notion-style text selection */
