@@ -9,13 +9,14 @@ import type { Locale } from "@/i18n-config";
 export default async function BillingPage({
   params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }) {
-  const dict = await getDictionary(params.lang);
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const session = await auth();
 
   if (!session?.user?.id) {
-    redirect(`/${params.lang}`);
+    redirect(`/${lang}`);
   }
 
   const subscriptionPlan = await getUserSubscriptionPlan(session.user.id);

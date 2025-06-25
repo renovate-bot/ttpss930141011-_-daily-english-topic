@@ -1,10 +1,9 @@
-import { auth } from "@/auth";
-import { db } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 import { UserRole } from "@prisma/client";
 
 export async function getUserSubscriptionPlan(userId: string) {
-  const user = await db.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: {
       id: userId,
     },
@@ -22,16 +21,17 @@ export async function getUserSubscriptionPlan(userId: string) {
   }
 
   // Check if user is on a pro plan.
-  const isPro =
+  const isPro = !!(
     user.stripePriceId &&
     user.stripeCurrentPeriodEnd &&
-    user.stripeCurrentPeriodEnd.getTime() + 86_400_000 > Date.now();
+    user.stripeCurrentPeriodEnd.getTime() + 86_400_000 > Date.now()
+  );
 
   const plan = isPro ? "pro" : "free";
 
   // Check if user has canceled subscription
   let isCanceled = false;
-  if (user.stripeSubscriptionId && isPro) {
+  if (user.stripeSubscriptionId && isPro && stripe) {
     const stripePlan = await stripe.subscriptions.retrieve(
       user.stripeSubscriptionId
     );

@@ -12,7 +12,11 @@ import type { Dictionary } from "@/types/dictionary";
 
 interface PricingCardsProps {
   userId?: string;
-  subscriptionPlan?: any;
+  subscriptionPlan?: {
+    plan: string;
+    isPro: boolean;
+    isCanceled: boolean;
+  };
   dict: Dictionary;
 }
 
@@ -24,7 +28,7 @@ export function PricingCards({ userId, subscriptionPlan, dict }: PricingCardsPro
 
   const handleSubscribe = async (priceId: string) => {
     if (!userId) {
-      signInModal.onOpen();
+      signInModal.open();
       return;
     }
 
@@ -104,7 +108,7 @@ export function PricingCards({ userId, subscriptionPlan, dict }: PricingCardsPro
                 ) : (
                   <div className="flex items-baseline">
                     <span className="text-5xl font-bold">
-                      {billingPeriod === "monthly" ? plan.price : plan.yearlyPrice}
+                      {billingPeriod === "monthly" ? plan.price : (plan as any).yearlyPrice || plan.price}
                     </span>
                     <span className="ml-2 text-muted-foreground">
                       /{billingPeriod === "monthly" ? dict.pricing.perMonth : dict.pricing.perYear}
@@ -133,7 +137,7 @@ export function PricingCards({ userId, subscriptionPlan, dict }: PricingCardsPro
               ))}
             </ul>
 
-            {plan.plan === "Free" ? (
+            {index === 0 ? (
               <Button
                 variant="outline"
                 className="w-full"

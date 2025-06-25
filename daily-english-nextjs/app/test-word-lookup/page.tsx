@@ -36,6 +36,10 @@ const mockDictionary: Dictionary = {
     darkMode: 'Dark Mode',
     notifications: 'Notifications',
     learningPreferences: 'Learning Preferences',
+    upgrade: 'Upgrade',
+    currentPlan: 'Current Plan',
+    manageBilling: 'Manage Billing',
+    viewPlans: 'View Plans',
   },
   homepage: {
     hero: {
@@ -132,6 +136,48 @@ const mockDictionary: Dictionary = {
     shortcuts: '快捷鍵',
     keyboardShortcuts: '鍵盤快捷鍵',
   },
+  pricing: {
+    title: 'Choose Your Plan',
+    subtitle: 'Unlock all features',
+    billingMonthly: 'Monthly',
+    billingYearly: 'Yearly',
+    save20: 'Save 20%',
+    mostPopular: 'Most Popular',
+    perMonth: '/month',
+    perYear: '/year',
+    planFree: {
+      name: 'Free',
+      price: '$0',
+      tagline: 'Start your journey',
+      features: ['3 daily topics', 'Basic features'],
+      cta: 'Get Started'
+    },
+    planPro: {
+      name: 'Pro',
+      price: '$19.99',
+      yearlyPrice: '$191.90',
+      tagline: 'Complete experience',
+      features: ['Unlimited topics', 'All features'],
+      cta: 'Upgrade Now'
+    }
+  },
+  billing: {
+    title: 'Billing',
+    needHelp: 'Need help?',
+    contactSupport: 'Contact Support',
+    managePlan: 'Manage Plan',
+    subscription: {
+      title: 'Current Subscription',
+      description: 'Manage your subscription',
+      currentPlan: 'Current Plan',
+      status: 'Status',
+      active: 'Active',
+      canceled: 'Canceled',
+      nextBilling: 'Next billing date',
+      endsOn: 'Ends on',
+      upgradePrompt: 'Upgrade to Pro'
+    }
+  }
 }
 
 export default function TestWordLookupPage() {

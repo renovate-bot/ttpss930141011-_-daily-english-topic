@@ -7,11 +7,12 @@ import type { Locale } from "@/i18n-config";
 export default async function PricingPage({
   params,
 }: {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }) {
-  const dict = await getDictionary(params.lang);
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
   const session = await auth();
-  let subscriptionPlan = null;
+  let subscriptionPlan = undefined;
 
   if (session?.user?.id) {
     subscriptionPlan = await getUserSubscriptionPlan(session.user.id);

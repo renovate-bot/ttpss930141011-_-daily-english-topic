@@ -129,15 +129,16 @@
   "pricing": {
     "title": "플랜 선택",
     "subtitle": "모든 기능을 잔금 해제하고 영어 학습 경험을 향상시키세요",
-    "monthly": "월간",
-    "yearly": "연간",
-    "save": "절약",
+    "billingMonthly": "월간",
+    "billingYearly": "연간",
+    "save20": "20% 절약",
     "mostPopular": "가장 인기",
-    "free": {
+    "perMonth": "/월",
+    "perYear": "/년",
+    "planFree": {
       "name": "무료",
       "price": "$0",
-      "period": "/월",
-      "description": "영어 학습 여정을 시작하세요",
+      "tagline": "영어 학습 여정을 시작하세요",
       "features": [
         "매일 3개의 학습 주제",
         "기본 어휘 검색",
@@ -146,97 +147,42 @@
       ],
       "cta": "시작하기"
     },
-    "starter": {
-      "name": "스타터",
-      "price": "$9.99",
-      "period": "/월",
-      "description": "진지한 학습자에게 완벽",
+    "planPro": {
+      "name": "프로",
+      "price": "$19.99",
+      "yearlyPrice": "$191.90",
+      "tagline": "완전한 학습 경험",
       "features": [
         "무제한 학습 주제",
         "고급 어휘 분석",
         "AI 기반 심층 설명",
         "학습 진도 추적",
         "오프라인 다운로드",
-        "우선 지원"
-      ],
-      "cta": "지금 업그레이드"
-    },
-    "pro": {
-      "name": "프로",
-      "price": "$19.99",
-      "period": "/월",
-      "description": "완전한 학습 경험",
-      "features": [
-        "스타터의 모든 기능",
+        "우선 지원",
         "개인화된 학습 계획",
         "1대 1 튜터 세션 (월 2회)",
         "전용 학습 커뮤니티",
         "인증서 및 성취 시스템",
         "API 접근"
       ],
-      "cta": "프로 되기"
-    },
-    "features": {
-      "title": "모든 플랜에 포함",
-      "list": [
-        "대화형 학습 콘텐츠",
-        "실제 대화 연습",
-        "크로스 플랫폼 동기화",
-        "정기적인 콘텐츠 업데이트"
-      ]
-    },
-    "faq": {
-      "title": "자주 묻는 질문",
-      "q1": "언제든지 구독을 취소할 수 있나요?",
-      "a1": "네, 추가 비용 없이 언제든지 구독을 취소할 수 있습니다.",
-      "q2": "환불이 가능한가요?",
-      "a2": "30일 무조건 환불 보증을 제공합니다.",
-      "q3": "플랜을 업그레이드하거나 다운그레이드하려면?",
-      "a3": "계정 설정에서 언제든지 구독 플랜을 변경할 수 있습니다."
+      "cta": "지금 업그레이드"
     }
   },
   "billing": {
     "title": "청구 및 구독",
+    "needHelp": "도움이 필요하신가요?",
+    "contactSupport": "지원팀 문의",
+    "managePlan": "플랜 관리",
     "subscription": {
       "title": "현재 구독",
+      "description": "구독 플랜과 청구 설정 관리",
+      "currentPlan": "현재 플랜",
       "status": "상태",
       "active": "활성",
-      "inactive": "비활성",
-      "cancelled": "취소됨",
-      "plan": "플랜",
+      "canceled": "취소됨",
       "nextBilling": "다음 청구일",
-      "amount": "금액",
-      "managePlan": "플랜 관리",
-      "cancelPlan": "플랜 취소",
-      "reactivate": "재활성화"
-    },
-    "paymentMethod": {
-      "title": "결제 수단",
-      "card": "카드",
-      "endingIn": "끝자리",
-      "expires": "만료일",
-      "update": "결제 수단 업데이트",
-      "add": "결제 수단 추가",
-      "remove": "제거"
-    },
-    "billingHistory": {
-      "title": "청구 기록",
-      "date": "날짜",
-      "description": "설명",
-      "amount": "금액",
-      "status": "상태",
-      "paid": "지불됨",
-      "pending": "대기 중",
-      "failed": "실패",
-      "download": "인보이스 다운로드",
-      "noHistory": "아직 청구 기록이 없습니다"
-    },
-    "actions": {
-      "updatePayment": "결제 정보 업데이트",
-      "changePlan": "플랜 변경",
-      "cancelSubscription": "구독 취소",
-      "confirmCancel": "정말로 취소하시겠습니까?",
-      "cancelWarning": "현재 청구 기간이 끝나면 프리미엄 기능에 대한 액세스를 잃게 됩니다."
+      "endsOn": "종료일",
+      "upgradePrompt": "프로로 업그레이드하여 모든 기능 사용"
     }
   }
 }

@@ -129,15 +129,16 @@
   "pricing": {
     "title": "选择您的方案",
     "subtitle": "解锁所有功能，提升您的英语学习体验",
-    "monthly": "月付",
-    "yearly": "年付",
-    "save": "节省",
+    "billingMonthly": "月付",
+    "billingYearly": "年付",
+    "save20": "节省 20%",
     "mostPopular": "最受欢迎",
-    "free": {
+    "perMonth": "/月",
+    "perYear": "/年",
+    "planFree": {
       "name": "免费版",
       "price": "$0",
-      "period": "/月",
-      "description": "开始您的英语学习之旅",
+      "tagline": "开始您的英语学习之旅",
       "features": [
         "每日 3 个学习主题",
         "基础词汇查询",
@@ -146,97 +147,42 @@
       ],
       "cta": "开始使用"
     },
-    "starter": {
-      "name": "入门版",
-      "price": "$9.99",
-      "period": "/月",
-      "description": "适合认真学习者",
+    "planPro": {
+      "name": "专业版",
+      "price": "$19.99",
+      "yearlyPrice": "$191.90",
+      "tagline": "完整的学习体验",
       "features": [
         "无限制学习主题",
         "高级词汇分析",
         "AI 驱动深度解释",
         "学习进度跟踪",
         "离线下载",
-        "优先客服支持"
-      ],
-      "cta": "立即升级"
-    },
-    "pro": {
-      "name": "专业版",
-      "price": "$19.99",
-      "period": "/月",
-      "description": "完整的学习体验",
-      "features": [
-        "入门版所有功能",
+        "优先客服支持",
         "个性化学习计划",
         "1对1 导师咨询（每月2次）",
         "专属学习社区",
         "证书与成就系统",
         "API 访问权限"
       ],
-      "cta": "成为专业版用户"
-    },
-    "features": {
-      "title": "所有方案都包含",
-      "list": [
-        "互动式学习内容",
-        "真实对话练习",
-        "跨平台同步",
-        "定期内容更新"
-      ]
-    },
-    "faq": {
-      "title": "常见问题",
-      "q1": "我可以随时取消订阅吗？",
-      "a1": "是的，您可以随时取消订阅，不会产生额外费用。",
-      "q2": "是否支持退款？",
-      "a2": "我们提供 30 天无条件退款保证。",
-      "q3": "如何升级或降级方案？",
-      "a3": "您可以在账户设置中随时更改您的订阅方案。"
+      "cta": "立即升级"
     }
   },
   "billing": {
     "title": "账单与订阅",
+    "needHelp": "需要帮助？",
+    "contactSupport": "联系客服",
+    "managePlan": "管理方案",
     "subscription": {
       "title": "当前订阅",
+      "description": "管理您的订阅方案和账单设置",
+      "currentPlan": "当前方案",
       "status": "状态",
       "active": "使用中",
-      "inactive": "未激活",
-      "cancelled": "已取消",
-      "plan": "方案",
+      "canceled": "已取消",
       "nextBilling": "下次账单日期",
-      "amount": "金额",
-      "managePlan": "管理方案",
-      "cancelPlan": "取消方案",
-      "reactivate": "重新激活"
-    },
-    "paymentMethod": {
-      "title": "付款方式",
-      "card": "信用卡",
-      "endingIn": "尾号",
-      "expires": "到期日",
-      "update": "更新付款方式",
-      "add": "添加付款方式",
-      "remove": "移除"
-    },
-    "billingHistory": {
-      "title": "账单记录",
-      "date": "日期",
-      "description": "描述",
-      "amount": "金额",
-      "status": "状态",
-      "paid": "已付款",
-      "pending": "待付款",
-      "failed": "付款失败",
-      "download": "下载发票",
-      "noHistory": "暂无账单记录"
-    },
-    "actions": {
-      "updatePayment": "更新付款信息",
-      "changePlan": "变更方案",
-      "cancelSubscription": "取消订阅",
-      "confirmCancel": "确定要取消订阅吗？",
-      "cancelWarning": "取消后，您将在当前计费周期结束时失去专业版功能。"
+      "endsOn": "结束日期",
+      "upgradePrompt": "升级到专业版以解锁所有功能"
     }
   }
 }

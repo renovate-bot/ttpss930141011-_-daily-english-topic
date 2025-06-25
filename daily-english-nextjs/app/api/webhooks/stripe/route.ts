@@ -1,11 +1,16 @@
 import { headers } from "next/headers";
 import Stripe from "stripe";
-import { db } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 
 export async function POST(req: Request) {
+  if (!stripe) {
+    return new Response("Stripe is not configured", { status: 500 });
+  }
+
   const body = await req.text();
-  const signature = headers().get("Stripe-Signature") as string;
+  const headersList = await headers();
+  const signature = headersList.get("Stripe-Signature") as string;
 
   let event: Stripe.Event;
 
@@ -30,7 +35,7 @@ export async function POST(req: Request) {
     // Update the user stripe into in our database.
     // Since this is the initial subscription, we need to update
     // the subscription id and customer id.
-    await db.user.update({
+    await prisma.user.update({
       where: {
         id: session?.metadata?.userId,
       },
@@ -39,7 +44,7 @@ export async function POST(req: Request) {
         stripeCustomerId: subscription.customer as string,
         stripePriceId: subscription.items.data[0].price.id,
         stripeCurrentPeriodEnd: new Date(
-          subscription.current_period_end * 1000
+          (subscription as any).current_period_end * 1000
         ),
       },
     });
@@ -52,14 +57,14 @@ export async function POST(req: Request) {
     );
 
     // Update the price id and set the new period end.
-    await db.user.update({
+    await prisma.user.update({
       where: {
         stripeSubscriptionId: subscription.id,
       },
       data: {
         stripePriceId: subscription.items.data[0].price.id,
         stripeCurrentPeriodEnd: new Date(
-          subscription.current_period_end * 1000
+          (subscription as any).current_period_end * 1000
         ),
       },
     });
