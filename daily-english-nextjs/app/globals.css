@@ -3,13 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* CJK font support */
-body {
-  font-family: var(--font-inter), "Noto Sans TC", "Noto Sans SC", "Noto Sans JP", "Noto Sans KR", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "MS Gothic", "Malgun Gothic", sans-serif;
-  min-height: 100vh;
-}
-
-
 /* Slide content optimization */
 .slide-content {
   max-height: 100%;
@@ -51,11 +44,11 @@ body {
     font-size: 0.875rem !important;
     line-height: 1.4 !important;
   }
-  
+
   .slide-content h2 {
     font-size: 1.25rem !important;
   }
-  
+
   .slide-content h3 {
     font-size: 1.1rem !important;
   }
@@ -120,44 +113,11 @@ body {
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Global Styles */
-* {
-  scroll-behavior: smooth;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-/* Always show vertical scrollbar to prevent layout shift */
-html {
-  overflow-y: scroll;
-  /* For modern browsers that support scrollbar-gutter */
-  scrollbar-gutter: stable;
-}
-
-/* Force scrollbar to always be visible */
-body {
-  overflow-y: scroll !important;
-  overflow-x: hidden;
-}
-
-/* Override Radix UI Dialog inline styles */
-body[style*="overflow: hidden"] {
-  overflow-y: scroll !important;
-}
-
-/* Ensure the scrollbar space is always reserved */
-@supports (scrollbar-gutter: stable) {
-  html {
-    overflow-y: auto;
-    scrollbar-gutter: stable;
-  }
-}
 
 /* Notion-style text selection */
 ::selection {
-  background-color: rgba(147, 51, 234, 0.2); /* Purple with 20% opacity */
+  background-color: rgba(147, 51, 234, 0.2);
+  /* Purple with 20% opacity */
   color: inherit;
   border-radius: 3px;
 }
@@ -183,11 +143,14 @@ body[style*="overflow: hidden"] {
 
 /* Highlighted text animation */
 @keyframes highlightPulse {
-  0%, 100% { 
+
+  0%,
+  100% {
     background-color: rgba(147, 51, 234, 0.25);
     box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.1);
   }
-  50% { 
+
+  50% {
     background-color: rgba(147, 51, 234, 0.35);
     box-shadow: 0 0 0 4px rgba(147, 51, 234, 0.05);
   }
@@ -221,10 +184,13 @@ body[style*="overflow: hidden"] {
 
 /* Animated Gradient Text - Used for dynamic backgrounds */
 @keyframes gradient-animation {
-  0%, 100% {
+
+  0%,
+  100% {
     background-size: 200% 200%;
     background-position: left center;
   }
+
   50% {
     background-size: 200% 200%;
     background-position: right center;
@@ -233,22 +199,27 @@ body[style*="overflow: hidden"] {
 
 /* Animated Background Patterns */
 .bg-animated-dots {
-  background-image: 
+  background-image:
     radial-gradient(circle, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
   animation: float 20s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     background-position: 0% 0%;
   }
+
   25% {
     background-position: 100% 0%;
   }
+
   50% {
     background-position: 100% 100%;
   }
+
   75% {
     background-position: 0% 100%;
   }
@@ -330,6 +301,7 @@ body[style*="overflow: hidden"] {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-transparent text-foreground;
   }
@@ -404,9 +376,17 @@ body[style*="overflow: hidden"] {
 
 /* Loading animation */
 @keyframes loading {
-  0% { width: 0%; }
-  50% { width: 70%; }
-  100% { width: 100%; }
+  0% {
+    width: 0%;
+  }
+
+  50% {
+    width: 70%;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
 /* Fade in animation */
@@ -424,6 +404,7 @@ body[style*="overflow: hidden"] {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -435,26 +416,26 @@ body[style*="overflow: hidden"] {
   .slide-content {
     line-height: 1.5;
   }
-  
+
   .slide-content h1 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .slide-content h2 {
     font-size: 1.125rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .slide-content h3 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .slide-content p {
     margin-bottom: 0.5rem;
   }
-  
+
   .slide-content ul,
   .slide-content ol {
     margin-bottom: 0.5rem;
