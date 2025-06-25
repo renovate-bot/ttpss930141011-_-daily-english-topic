@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "turbo": "next dev --turbopack",
+    "dev": "next dev ",
     "dev:custom": "node server.js",
     "build": "npm run validate:i18n && next build",
     "start": "next start",
