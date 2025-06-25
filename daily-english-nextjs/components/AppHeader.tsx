@@ -127,7 +127,7 @@ export function AppHeader({ dictionary, locale }: AppHeaderProps) {
 
           {/* Sign In Button or User Nav */}
           {session?.user ? (
-            <UserNav />
+            <UserNav locale={locale} />
           ) : (
             <button
               className="hidden gap-2 px-5 py-1 bg-purple-600 hover:bg-purple-700 text-white rounded-full transition-colors md:flex items-center"

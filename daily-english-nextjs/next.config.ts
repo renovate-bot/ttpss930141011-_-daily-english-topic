@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   // 配置選項
   reactStrictMode: true,
   images: {
-    domains: ['api.dictionaryapi.dev'],
+    domains: ['api.dictionaryapi.dev', 'lh3.googleusercontent.com'],
   },
   eslint: {
     // 在 production build 時跳過 ESLint

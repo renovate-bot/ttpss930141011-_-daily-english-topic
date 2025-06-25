@@ -32,7 +32,12 @@
     "upgrade": "アップグレード",
     "currentPlan": "現在のプラン",
     "manageBilling": "請求管理",
-    "viewPlans": "プランを見る"
+    "viewPlans": "プランを見る",
+    "voiceCallAuthRequired": "音声通話機能を使用するにはサインインしてください",
+    "voiceCallAuthDescription": "右上のサインインボタンをクリックしてください",
+    "voiceCallAuthAction": "今すぐサインイン",
+    "voiceCallError": "音声通話を開始できません",
+    "voiceCallErrorDescription": "ネットワーク接続を確認してもう一度お試しください"
   },
   "homepage": {
     "hero": {

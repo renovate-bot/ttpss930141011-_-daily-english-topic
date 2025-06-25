@@ -32,7 +32,12 @@
     "upgrade": "升级",
     "currentPlan": "当前方案",
     "manageBilling": "管理账单",
-    "viewPlans": "查看方案"
+    "viewPlans": "查看方案",
+    "voiceCallAuthRequired": "请先登录以使用语音对话功能",
+    "voiceCallAuthDescription": "点击右上角的登录按钮",
+    "voiceCallAuthAction": "立即登录",
+    "voiceCallError": "无法启动语音对话",
+    "voiceCallErrorDescription": "请检查网络连接并重试"
   },
   "homepage": {
     "hero": {

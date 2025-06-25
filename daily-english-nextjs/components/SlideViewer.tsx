@@ -7,6 +7,9 @@ import { WordLookupManager } from '@/components/word-lookup/WordLookupManager'
 import { type Dictionary } from '@/types/dictionary'
 import { VoiceCallButton, VoiceCallInterface } from '@/components/voice-call/VoiceCallButton'
 import { useRealtimeTeacher } from '@/hooks/useRealtimeTeacher'
+import { toast } from 'sonner'
+import { useSession } from 'next-auth/react'
+import { useSignInModal } from '@/hooks/use-sign-in-modal'
 
 interface SlideViewerProps {
   topic: Topic
@@ -26,6 +29,8 @@ export default function SlideViewer({
   const [touchStart, setTouchStart] = useState<number | null>(null)
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
   const [showVoiceInterface, setShowVoiceInterface] = useState(false)
+  const { data: session } = useSession()
+  const signInModal = useSignInModal()
   
   const currentSlideData = topic.slides[currentSlide]
   
@@ -168,8 +173,26 @@ export default function SlideViewer({
                 isFullscreen={false}
                 isCallActive={isCallActive}
                 onCallStart={async () => {
+                  if (!session) {
+                    toast.error(dictionary.common.voiceCallAuthRequired, {
+                      description: dictionary.common.voiceCallAuthDescription,
+                      action: {
+                        label: dictionary.common.voiceCallAuthAction,
+                        onClick: () => signInModal.open()
+                      }
+                    })
+                    return
+                  }
                   setShowVoiceInterface(true)
-                  await startCall()
+                  try {
+                    await startCall()
+                  } catch (error) {
+                    console.error('Failed to start call:', error)
+                    toast.error(dictionary.common.voiceCallError, {
+                      description: dictionary.common.voiceCallErrorDescription
+                    })
+                    setShowVoiceInterface(false)
+                  }
                 }}
                 onCallEnd={() => {
                   setShowVoiceInterface(false)
