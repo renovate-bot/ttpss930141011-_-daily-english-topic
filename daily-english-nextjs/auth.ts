@@ -46,12 +46,8 @@ export const {
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   
-  pages: {
-    signIn: '/auth/signin',
-    signOut: '/auth/signout',
-    error: '/auth/error',
-    verifyRequest: '/auth/verify-request',
-  },
+  // Remove custom pages to allow direct OAuth redirects
+  // pages: {},
   
   callbacks: {
     /**
