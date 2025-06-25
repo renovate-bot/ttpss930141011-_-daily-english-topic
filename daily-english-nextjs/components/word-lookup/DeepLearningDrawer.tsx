@@ -44,7 +44,7 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
   const [isDragging, setIsDragging] = useState(false)
   const [dragStartX, setDragStartX] = useState(0)
   const [dragStartWidth, setDragStartWidth] = useState(0)
-  const isDesktop = useMediaQuery('(min-width: 768px)')
+  const { isDesktop } = useMediaQuery();
   const [showToast, setShowToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null)
 
   // Auto-focus on drawer open
@@ -82,10 +82,10 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
           if (event.ctrlKey || event.metaKey) {
             event.preventDefault()
             const currentIndex = deepTabs.findIndex(tab => tab.id === activeTabId)
-            const nextIndex = event.shiftKey 
+            const nextIndex = event.shiftKey
               ? (currentIndex - 1 + deepTabs.length) % deepTabs.length
               : (currentIndex + 1) % deepTabs.length
-            
+
             if (deepTabs[nextIndex]) {
               switchToTab(deepTabs[nextIndex].id)
             }
@@ -112,7 +112,7 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
             const nextIndex = event.key === 'ArrowLeft'
               ? (currentIndex - 1 + deepTabs.length) % deepTabs.length
               : (currentIndex + 1) % deepTabs.length
-            
+
             if (deepTabs[nextIndex]) {
               switchToTab(deepTabs[nextIndex].id)
             }
@@ -155,7 +155,7 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!isDragging) return
-    
+
     const deltaX = dragStartX - e.clientX
     const newWidth = dragStartWidth + deltaX
     setDeepDrawerWidth(newWidth)
@@ -244,7 +244,7 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
                 {deepTabs.length > 0 ? deepTabs[deepTabs.length - 1].title : dictionary.wordLookup.selectTextToLearn}
               </DrawerDescription>
             </DrawerHeader>
-            
+
             {/* Mobile tab bar */}
             {deepTabs.length > 0 && (
               <div className="px-4 pb-2">
@@ -278,7 +278,7 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
                     </div>
                   ) : activeTab.content ? (
                     <div className="animate-in fade-in duration-300">
-                      <div 
+                      <div
                         className="prose prose-sm max-w-none word-lookup-content"
                         dangerouslySetInnerHTML={{ __html: marked(activeTab.content) }}
                       />
@@ -344,7 +344,7 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
           "fixed top-0 right-0 h-full bg-white border-l border-gray-200 shadow-2xl z-40 flex",
           className
         )}
-        style={{ 
+        style={{
           width: `${deepDrawerWidth}px`,
           transform: showDeepDrawer && !isDeepDrawerMinimized ? 'translateX(0)' : 'translateX(100%)',
           transition: isDragging ? 'none' : 'transform 300ms ease-out'
@@ -423,11 +423,10 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
                 {deepTabs.map((tab) => (
                   <button
                     key={tab.id}
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded text-sm whitespace-nowrap transition-colors ${
-                      tab.id === activeTabId
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded text-sm whitespace-nowrap transition-colors ${tab.id === activeTabId
                         ? 'bg-purple-100 text-purple-800 border border-purple-200'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
+                      }`}
                     onClick={() => switchToTab(tab.id)}
                   >
                     <span className="truncate max-w-[120px]">{tab.title}</span>
@@ -461,7 +460,7 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
                       <Skeleton className="h-20 w-full mb-4" />
                       <Skeleton className="h-4 w-2/3" />
                     </div>
-                    
+
                     {/* Loading indicator */}
                     <div className="flex flex-col items-center justify-center py-4">
                       <div className="relative">
@@ -476,7 +475,7 @@ export function DeepLearningDrawer({ className = '', dictionary }: DeepLearningD
                   </div>
                 ) : activeTab.content ? (
                   <div className="animate-in fade-in duration-300">
-                    <div 
+                    <div
                       className="prose prose-sm max-w-none word-lookup-content"
                       dangerouslySetInnerHTML={{ __html: marked(activeTab.content) }}
                     />
