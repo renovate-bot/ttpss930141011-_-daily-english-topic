@@ -5,8 +5,9 @@
 
 /**
  * OpenAI Realtime model identifier.
+ * Using GPT-4o mini for cost efficiency while maintaining good quality.
  */
-export const REALTIME_MODEL = 'gpt-4o-realtime-preview-2025-06-03'
+export const REALTIME_MODEL = 'gpt-4o-mini-realtime-preview'
 
 /**
  * Voice option for the AI teacher.
