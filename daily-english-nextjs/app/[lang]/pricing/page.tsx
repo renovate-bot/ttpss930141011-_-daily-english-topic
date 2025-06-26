@@ -52,7 +52,7 @@ export default async function PricingPage({
   }
 
   return (
-    <PageLayout>
+    <PageLayout variant="pricing">
       <div className="flex w-full flex-col gap-16 py-8 md:py-8">
         <PricingCards userId={session?.user?.id} subscriptionPlan={subscriptionPlan} dict={dict} />
         <hr className="container border-white/20" />

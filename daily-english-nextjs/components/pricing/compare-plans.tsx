@@ -30,13 +30,13 @@ export function ComparePlans() {
         <table className="w-full table-fixed backdrop-blur-lg bg-white/10 rounded-2xl overflow-hidden border border-white/20">
           <thead>
             <tr className="divide-x divide-white/20 border-b border-white/20">
-              <th className="sticky left-0 z-20 w-40 bg-white/10 backdrop-blur-sm p-5 md:w-1/4 lg:top-14"></th>
+              <th className="w-40 bg-white/10 backdrop-blur-sm p-5 md:w-1/4"></th>
               {plansColumns.map((col) => (
                 <th
                   key={col}
-                  className="sticky z-10 w-40 bg-white/10 backdrop-blur-sm p-5 font-heading text-xl capitalize tracking-wide text-white md:w-auto lg:top-14 lg:text-2xl"
+                  className="w-40 bg-white/10 backdrop-blur-sm p-5 font-heading text-xl tracking-wide text-white md:w-auto lg:text-2xl"
                 >
-                  {col}
+                  {col.charAt(0).toUpperCase() + col.slice(1)}
                 </th>
               ))}
             </tr>
@@ -46,7 +46,7 @@ export function ComparePlans() {
               <tr key={index} className="divide-x divide-white/20 hover:bg-white/5 transition-colors">
                 <td
                   data-tip={row.tooltip ? row.tooltip : ""}
-                  className="sticky left-0 bg-white/5 backdrop-blur-sm md:bg-transparent"
+                  className="bg-white/5 backdrop-blur-sm"
                 >
                   <div className="flex items-center justify-between space-x-2 p-4">
                     <span className="text-[15px] font-medium lg:text-base text-gray-100">

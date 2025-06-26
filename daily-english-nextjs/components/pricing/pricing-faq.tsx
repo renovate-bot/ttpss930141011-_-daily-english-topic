@@ -10,39 +10,39 @@ import { HeaderSection } from "@/components/shared/header-section";
 const pricingFaqData = [
   {
     id: "item-1",
-    question: "What is the cost of the free plan?",
+    question: "What's included in the Free plan?",
     answer:
-      "Our free plan is completely free, with no monthly or annual charges. It's a great way to get started and explore our basic features.",
+      "The Free plan includes quick double-click translation, bookmarking features, and access to 3 daily English learning topics. It's perfect for casual learners who want to explore our platform.",
   },
   {
     id: "item-2",
-    question: "How much does the Basic Monthly plan cost?",
+    question: "How much does the Pro plan cost?",
     answer:
-      "The Basic Monthly plan is priced at $15 per month. It provides access to our core features and is billed on a monthly basis.",
+      "The Pro plan is CAD $9.99 per month or CAD $99.99 per year (save 17%). It includes 45 minutes daily of REAL human-like voice conversations with AI teacher Emma - not robotic text-to-speech like other apps!",
   },
   {
     id: "item-3",
-    question: "What is the price of the Pro Monthly plan?",
+    question: "What makes Emma different from other AI tutors?",
     answer:
-      "The Pro Monthly plan is available for $25 per month. It offers advanced features and is billed on a monthly basis for added flexibility.",
+      "Unlike other apps that use robotic text-to-speech, Emma uses OpenAI's Realtime API for truly natural conversations. She sounds human, understands context, laughs at jokes, and responds instantly - just like talking to a real person! No more awkward pauses or mechanical voices.",
   },
   {
     id: "item-4",
-    question: "Do you offer any annual subscription plans?",
+    question: "Can I cancel my subscription anytime?",
     answer:
-      "Yes, we offer annual subscription plans for even more savings. The Basic Annual plan is $144 per year, and the Pro Annual plan is $300 per year.",
+      "Yes! You can cancel your Pro subscription anytime. You'll continue to have access to Pro features until the end of your billing period, then your account will revert to the Free plan.",
   },
   {
     id: "item-5",
-    question: "Is there a trial period for the paid plans?",
+    question: "How does deep translation analysis work?",
     answer:
-      "We offer a 14-day free trial for both the Pro Monthly and Pro Annual plans. It's a great way to experience all the features before committing to a paid subscription.",
+      "Deep translation goes beyond simple word meanings. It provides detailed explanations, usage examples, synonyms, antonyms, etymology, and related words. It's like having a comprehensive dictionary and language tutor combined.",
   },
 ];
 
 export function PricingFaq() {
   return (
-    <section className="container max-w-4xl py-2">
+    <section className="container max-w-4xl mx-auto py-2">
       <HeaderSection
         label="FAQ"
         title="Frequently Asked Questions"
