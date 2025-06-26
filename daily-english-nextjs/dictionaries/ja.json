@@ -178,6 +178,64 @@
     "needHelp": "お困りですか？",
     "contactSupport": "サポートに連絡",
     "managePlan": "プラン管理",
+    "demo": {
+      "title": "デモモード",
+      "description": "これはStripeテスト環境を使用したデモです。",
+      "testCardsLink": "テストカード",
+      "forPayments": "を使用して支払いを行ってください。"
+    },
+    "currentPlan": {
+      "title": "現在のプラン",
+      "description": "サブスクリプションと請求を管理",
+      "monthlyCost": "月額費用",
+      "billingCycle": "請求サイクル",
+      "status": "ステータス",
+      "expiresOn": "有効期限",
+      "nextBilling": "次回請求",
+      "monthly": "月額",
+      "active": "アクティブ",
+      "canceled": "キャンセル済み",
+      "na": "該当なし",
+      "upgradeButton": "プロにアップグレード",
+      "manageButton": "サブスクリプション管理"
+    },
+    "usage": {
+      "title": "今月の使用状況",
+      "description": "異なる機能の使用状況を追跡",
+      "topicsGenerated": "生成されたトピック",
+      "translations": "翻訳",
+      "apiCalls": "APIコール"
+    },
+    "tabs": {
+      "paymentBilling": "支払いと請求",
+      "invoiceHistory": "請求書履歴"
+    },
+    "payment": {
+      "title": "支払い方法",
+      "description": "Stripeを通じて支払い方法を管理",
+      "manageInStripe": "Stripeで管理",
+      "secureMessage": "支払い方法はStripeで安全に管理されています",
+      "clickToView": "「Stripeで管理」をクリックして表示または更新"
+    },
+    "invoices": {
+      "title": "請求書履歴",
+      "description": "過去の請求書を表示してダウンロード",
+      "viewInStripe": "Stripeで表示",
+      "noInvoices": "請求書はまだありません",
+      "upgradeToSee": "プロにアップグレードして請求書の受信を開始",
+      "tableHeaders": {
+        "invoice": "請求書",
+        "date": "日付",
+        "description": "説明",
+        "amount": "金額",
+        "status": "ステータス"
+      },
+      "paid": "支払い済み",
+      "planMonthly": " プラン - 月額"
+    },
+    "security": {
+      "message": "あなたの支払い情報は暗号化され安全です。すべての支払い処理にStripeを使用しています。"
+    },
     "subscription": {
       "title": "現在のサブスクリプション",
       "description": "サブスクリプションプランと請求設定を管理",

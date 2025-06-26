@@ -178,6 +178,64 @@
     "needHelp": "도움이 필요하신가요?",
     "contactSupport": "지원팀 문의",
     "managePlan": "플랜 관리",
+    "demo": {
+      "title": "데모 모드",
+      "description": "이것은 Stripe 테스트 환경을 사용하는 데모입니다.",
+      "testCardsLink": "테스트 카드",
+      "forPayments": "를 사용하여 결제하세요."
+    },
+    "currentPlan": {
+      "title": "현재 플랜",
+      "description": "구독 및 청구 관리",
+      "monthlyCost": "월 비용",
+      "billingCycle": "청구 주기",
+      "status": "상태",
+      "expiresOn": "만료일",
+      "nextBilling": "다음 청구",
+      "monthly": "월간",
+      "active": "활성",
+      "canceled": "취소됨",
+      "na": "해당 없음",
+      "upgradeButton": "프로로 업그레이드",
+      "manageButton": "구독 관리"
+    },
+    "usage": {
+      "title": "이번 달 사용량",
+      "description": "다양한 기능의 사용량 추적",
+      "topicsGenerated": "생성된 주제",
+      "translations": "번역",
+      "apiCalls": "API 호출"
+    },
+    "tabs": {
+      "paymentBilling": "결제 및 청구",
+      "invoiceHistory": "송장 내역"
+    },
+    "payment": {
+      "title": "결제 방법",
+      "description": "Stripe를 통해 결제 방법 관리",
+      "manageInStripe": "Stripe에서 관리",
+      "secureMessage": "결제 방법은 Stripe에서 안전하게 관리됩니다",
+      "clickToView": "보거나 업데이트하려면 「Stripe에서 관리」를 클릭하세요"
+    },
+    "invoices": {
+      "title": "송장 내역",
+      "description": "과거 송장 보기 및 다운로드",
+      "viewInStripe": "Stripe에서 보기",
+      "noInvoices": "아직 송장이 없습니다",
+      "upgradeToSee": "프로로 업그레이드하여 송장 받기 시작",
+      "tableHeaders": {
+        "invoice": "송장",
+        "date": "날짜",
+        "description": "설명",
+        "amount": "금액",
+        "status": "상태"
+      },
+      "paid": "지불됨",
+      "planMonthly": " 플랜 - 월간"
+    },
+    "security": {
+      "message": "귀하의 결제 정보는 암호화되어 안전합니다. 모든 결제 처리에 Stripe를 사용합니다."
+    },
     "subscription": {
       "title": "현재 구독",
       "description": "구독 플랜과 청구 설정 관리",

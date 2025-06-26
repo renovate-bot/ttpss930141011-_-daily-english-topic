@@ -33,6 +33,11 @@ export interface Dictionary {
     currentPlan: string
     manageBilling: string
     viewPlans: string
+    voiceCallAuthRequired: string
+    voiceCallAuthDescription: string
+    voiceCallAuthAction: string
+    voiceCallError: string
+    voiceCallErrorDescription: string
   }
   homepage: {
     hero: {
@@ -159,6 +164,64 @@ export interface Dictionary {
     needHelp: string
     contactSupport: string
     managePlan: string
+    demo: {
+      title: string
+      description: string
+      testCardsLink: string
+      forPayments: string
+    }
+    currentPlan: {
+      title: string
+      description: string
+      monthlyCost: string
+      billingCycle: string
+      status: string
+      expiresOn: string
+      nextBilling: string
+      monthly: string
+      active: string
+      canceled: string
+      na: string
+      upgradeButton: string
+      manageButton: string
+    }
+    usage: {
+      title: string
+      description: string
+      topicsGenerated: string
+      translations: string
+      apiCalls: string
+    }
+    tabs: {
+      paymentBilling: string
+      invoiceHistory: string
+    }
+    payment: {
+      title: string
+      description: string
+      manageInStripe: string
+      secureMessage: string
+      clickToView: string
+    }
+    invoices: {
+      title: string
+      description: string
+      viewInStripe: string
+      noInvoices: string
+      upgradeToSee: string
+      tableHeaders: {
+        invoice: string
+        date: string
+        description: string
+        amount: string
+        status: string
+      }
+      paid: string
+      planMonthly: string
+    }
+    security: {
+      message: string
+    }
     subscription: {
       title: string
       description: string
