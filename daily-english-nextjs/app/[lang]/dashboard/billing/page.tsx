@@ -1,12 +1,21 @@
 import { redirect } from "next/navigation";
-
 import { getUserSubscriptionPlan } from "@/lib/subscription";
 import BillingPanel from "@/components/billing/billing-panel";
 import { auth } from "@/auth";
 import { UserSubscriptionPlan } from "@/types/subscription";
+import { getDictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/i18n-config";
 
 
-export default async function BillingPage() {
+interface BillingPageProps {
+  params: Promise<{
+    lang: Locale;
+  }>;
+}
+
+export default async function BillingPage({ params }: BillingPageProps) {
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
   const session = await auth();
 
   if (!session?.user) {
@@ -45,7 +54,10 @@ export default async function BillingPage() {
   return (
     <>
       <div className="flex flex-1 gap-8">
-        <BillingPanel userSubscriptionPlan={userSubscriptionPlan} />
+        <BillingPanel 
+          userSubscriptionPlan={userSubscriptionPlan} 
+          dictionary={dictionary}
+        />
       </div>
     </>
   );
