@@ -1,61 +1,117 @@
-export const pricingData = [
+import { PlansRow, SubscriptionPlan } from "@/types/subscription";
+
+export const pricingData: SubscriptionPlan[] = [
   {
-    plan: "Free",
-    tagline: "探索基礎英文學習",
-    quota: 5,
-    features: [
-      "每月 5 個學習主題",
-      "基礎單字查詢功能",
-      "閱讀簡易文章",
-      "基本發音練習",
+    title: "Free",
+    description: "For Beginners",
+    benefits: [
+      "Up to 100 monthly posts",
+      "Basic analytics and reporting",
+      "Access to standard templates",
     ],
+    limitations: [
+      "No priority access to new features.",
+      "Limited customer support",
+      "No custom branding",
+      "Limited access to business resources.",
+    ],
+    prices: {
+      monthly: 0,
+      yearly: 0,
+    },
+    stripeIds: {
+      monthly: null,
+      yearly: null,
+    },
   },
   {
-    plan: "Pro",
-    tagline: "解鎖進階學習功能",
-    quota: -1,
-    features: [
-      "無限學習主題",
-      "深度單字解析與例句",
-      "AI 對話練習",
-      "個人學習進度追蹤",
-      "客製化學習計畫",
-      "離線學習支援",
-      "優先客服支援",
+    title: "Pro",
+    description: "Unlock Advanced Features",
+    benefits: [
+      "Up to 500 monthly posts",
+      "Advanced analytics and reporting",
+      "Access to business templates",
+      "Priority customer support",
+      "Exclusive webinars and training.",
     ],
+    limitations: [
+      "No custom branding",
+      "Limited access to business resources.",
+    ],
+    prices: {
+      monthly: 10,
+      yearly: 96,
+    },
+    stripeIds: {
+      monthly: process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PLAN_ID as string | null,
+      yearly: process.env.NEXT_PUBLIC_STRIPE_PRO_YEARLY_PLAN_ID as string | null,
+    },
   },
 ];
 
-export const storeSubscriptionPlans = [
+export const plansColumns = ["free", "pro"] as const;
+
+export const comparePlans: PlansRow[] = [
   {
-    id: "pro",
-    name: "Pro",
-    description: "Pro 訂閱方案",
-    features: [
-      "無限學習主題",
-      "深度單字解析與例句",
-      "AI 對話練習",
-      "個人學習進度追蹤",
-      "客製化學習計畫",
-      "離線學習支援",
-      "優先客服支援",
-    ],
-    stripePriceId: "",
-    prices: {
-      monthly: {
-        amount: 15,
-        priceIds: {
-          test: "",
-          production: "",
-        },
-      },
-      yearly: {
-        amount: 144,
-        priceIds: {
-          test: "",
-          production: "",
-        },
-      },
-    },
+    feature: "Access to Analytics",
+    free: true,
+    pro: true,
+    tooltip: "All plans include basic analytics for tracking performance.",
   },
+  {
+    feature: "Custom Branding",
+    free: null,
+    pro: "500/mo",
+    tooltip: "Custom branding is available from the Pro plan onwards.",
+  },
+  {
+    feature: "Priority Support",
+    free: null,
+    pro: "Email",
+  },
+  {
+    feature: "Advanced Reporting",
+    free: null,
+    pro: null,
+    tooltip:
+      "Advanced reporting is available in Business and Enterprise plans.",
+  },
+  {
+    feature: "Dedicated Manager",
+    free: null,
+    pro: null,
+    tooltip: "Enterprise plan includes a dedicated account manager.",
+  },
+  {
+    feature: "API Access",
+    free: "Limited",
+    pro: "Standard",
+  },
+  {
+    feature: "Monthly Webinars",
+    free: false,
+    pro: true,
+    tooltip: "Pro and higher plans include access to monthly webinars.",
+  },
+  {
+    feature: "Custom Integrations",
+    free: false,
+    pro: false,
+    tooltip:
+      "Custom integrations are available in Business and Enterprise plans.",
+  },
+  {
+    feature: "Roles and Permissions",
+    free: null,
+    pro: "Basic",
+    tooltip:
+      "User roles and permissions management improves with higher plans.",
+  },
+  {
+    feature: "Onboarding Assistance",
+    free: false,
+    pro: "Self-service",
+    tooltip: "Higher plans include more comprehensive onboarding assistance.",
+  },
+  // Add more rows as needed
 ];

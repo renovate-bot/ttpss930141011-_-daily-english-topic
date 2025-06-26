@@ -1,8 +1,9 @@
 import { prisma } from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
-import { UserRole } from "@prisma/client";
+import { pricingData } from "@/config/subscriptions";
+import { UserSubscriptionPlan } from "@/types/subscription";
 
-export async function getUserSubscriptionPlan(userId: string) {
+export async function getUserSubscriptionPlan(userId: string): Promise<UserSubscriptionPlan> {
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -20,43 +21,43 @@ export async function getUserSubscriptionPlan(userId: string) {
     throw new Error("User not found");
   }
 
-  // Check if user is on a pro plan.
-  const isPro = !!(
+  // Check if user is on a paid plan.
+  const isPaid =
     user.stripePriceId &&
-    user.stripeCurrentPeriodEnd &&
-    user.stripeCurrentPeriodEnd.getTime() + 86_400_000 > Date.now()
-  );
+      user.stripeCurrentPeriodEnd &&
+      user.stripeCurrentPeriodEnd.getTime() + 86_400_000 > Date.now()
+      ? true
+      : false;
 
-  const plan = isPro ? "pro" : "free";
+  // Find the pricing data corresponding to the user's plan
+  const userPlan =
+    pricingData.find((plan) => plan.stripeIds.monthly === user.stripePriceId) ||
+    pricingData.find((plan) => plan.stripeIds.yearly === user.stripePriceId);
 
-  // Check if user has canceled subscription
+  const plan = isPaid && userPlan ? userPlan : pricingData[0];
+
+  const interval = isPaid
+    ? userPlan?.stripeIds.monthly === user.stripePriceId
+      ? "month"
+      : userPlan?.stripeIds.yearly === user.stripePriceId
+        ? "year"
+        : null
+    : null;
+
   let isCanceled = false;
-  if (user.stripeSubscriptionId && isPro && stripe) {
+  if (isPaid && user.stripeSubscriptionId) {
     const stripePlan = await stripe.subscriptions.retrieve(
-      user.stripeSubscriptionId
+      user.stripeSubscriptionId,
     );
     isCanceled = stripePlan.cancel_at_period_end;
   }
 
   return {
+    ...plan,
     ...user,
-    stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime() ?? 0,
-    isPro,
-    isAdmin: user.role === UserRole.ADMIN,
-    plan,
+    stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime() || 0,
+    isPaid,
+    interval,
     isCanceled,
-  };
-}
-
-export async function checkUserSubscription(userId?: string | null) {
-  if (!userId) {
-    return { isPro: false, isAdmin: false };
-  }
-
-  const userSubscriptionPlan = await getUserSubscriptionPlan(userId);
-
-  return {
-    isPro: userSubscriptionPlan.isPro,
-    isAdmin: userSubscriptionPlan.isAdmin,
   };
 }
