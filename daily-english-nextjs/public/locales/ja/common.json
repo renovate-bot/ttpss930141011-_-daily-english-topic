@@ -16,5 +16,77 @@
   "submit": "送信",
   "success": "成功",
   "warning": "警告",
-  "info": "情報"
+  "info": "情報",
+  "language": "言語",
+  "changeLanguage": "言語を変更",
+  "selectLanguage": "言語を選択",
+  "settings": "設定",
+  "profile": "プロフィール",
+  "signIn": "ログイン",
+  "signOut": "ログアウト",
+  "comingSoon": "近日公開",
+  "darkMode": "ダークモード",
+  "notifications": "通知設定",
+  "learningPreferences": "学習設定",
+  "billing": {
+    "title": "請求管理",
+    "currentPlan": {
+      "title": "現在のプラン",
+      "description": "サブスクリプションと請求を管理",
+      "monthlyCost": "月額料金",
+      "billingCycle": "請求サイクル",
+      "status": "ステータス",
+      "active": "アクティブ",
+      "canceled": "キャンセル済み",
+      "nextBilling": "次回請求日",
+      "expiresOn": "有効期限",
+      "freePlan": "無料プラン",
+      "proPlan": "プロプラン",
+      "monthly": "月額",
+      "yearly": "年額"
+    },
+    "usage": {
+      "title": "今月の使用状況",
+      "description": "各機能の使用状況を追跡",
+      "topicsGenerated": "生成されたトピック",
+      "translations": "翻訳回数",
+      "apiCalls": "API呼び出し回数"
+    },
+    "paymentMethods": {
+      "title": "支払い方法",
+      "description": "Stripeで支払い方法を管理",
+      "manageInStripe": "Stripeで管理",
+      "secureMessage": "支払い方法はStripeで安全に管理されています",
+      "clickToUpdate": "「Stripeで管理」をクリックして表示または更新",
+      "encryptedInfo": "お支払い情報は暗号化され、安全に保護されています。すべての決済処理にStripeを使用しています。"
+    },
+    "invoiceHistory": {
+      "title": "請求書履歴",
+      "description": "過去の請求書を表示およびダウンロード",
+      "viewInStripe": "Stripeで表示",
+      "invoice": "請求書番号",
+      "date": "日付",
+      "description": "説明",
+      "amount": "金額",
+      "status": "ステータス",
+      "paid": "支払済み",
+      "noInvoices": "請求書はまだありません",
+      "upgradeForInvoices": "プロプランにアップグレードして請求書を受け取る"
+    },
+    "buttons": {
+      "upgradeToPro": "プロプランにアップグレード",
+      "manageSubscription": "サブスクリプション管理",
+      "viewInStripe": "Stripeで表示"
+    },
+    "tabs": {
+      "paymentBilling": "支払いと請求",
+      "invoiceHistory": "請求書履歴"
+    },
+    "demo": {
+      "title": "デモモード",
+      "description": "これはStripeテスト環境を使用したデモです。",
+      "testCards": "テストカード",
+      "forPayments": "を使用して支払いを行ってください。"
+    }
+  }
 }

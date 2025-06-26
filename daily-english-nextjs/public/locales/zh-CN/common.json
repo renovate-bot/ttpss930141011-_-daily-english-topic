@@ -16,5 +16,77 @@
   "submit": "提交",
   "success": "成功",
   "warning": "警告",
-  "info": "信息"
+  "info": "信息",
+  "language": "语言",
+  "changeLanguage": "切换语言",
+  "selectLanguage": "选择语言",
+  "settings": "设置",
+  "profile": "个人资料",
+  "signIn": "登录",
+  "signOut": "登出",
+  "comingSoon": "即将推出",
+  "darkMode": "深色模式",
+  "notifications": "通知设置",
+  "learningPreferences": "学习偏好",
+  "billing": {
+    "title": "账单管理",
+    "currentPlan": {
+      "title": "当前方案",
+      "description": "管理您的订阅和账单",
+      "monthlyCost": "月费",
+      "billingCycle": "计费周期",
+      "status": "状态",
+      "active": "使用中",
+      "canceled": "已取消",
+      "nextBilling": "下次扣款日",
+      "expiresOn": "到期日",
+      "freePlan": "免费方案",
+      "proPlan": "专业方案",
+      "monthly": "月付",
+      "yearly": "年付"
+    },
+    "usage": {
+      "title": "本月使用量",
+      "description": "跟踪您在各项功能的使用情况",
+      "topicsGenerated": "生成的主题",
+      "translations": "翻译次数",
+      "apiCalls": "API 调用次数"
+    },
+    "paymentMethods": {
+      "title": "付款方式",
+      "description": "通过 Stripe 管理您的付款方式",
+      "manageInStripe": "在 Stripe 中管理",
+      "secureMessage": "付款方式通过 Stripe 安全管理",
+      "clickToUpdate": "点击"在 Stripe 中管理"以查看或更新",
+      "encryptedInfo": "您的付款信息已加密并受到保护。我们使用 Stripe 处理所有付款流程。"
+    },
+    "invoiceHistory": {
+      "title": "发票记录",
+      "description": "查看并下载您的历史发票",
+      "viewInStripe": "在 Stripe 中查看",
+      "invoice": "发票编号",
+      "date": "日期",
+      "description": "说明",
+      "amount": "金额",
+      "status": "状态",
+      "paid": "已付款",
+      "noInvoices": "暂无发票",
+      "upgradeForInvoices": "升级至专业版即可开始接收发票"
+    },
+    "buttons": {
+      "upgradeToPro": "升级至专业版",
+      "manageSubscription": "管理订阅",
+      "viewInStripe": "在 Stripe 中查看"
+    },
+    "tabs": {
+      "paymentBilling": "付款与账单",
+      "invoiceHistory": "发票记录"
+    },
+    "demo": {
+      "title": "演示模式",
+      "description": "这是使用 Stripe 测试环境的演示。请使用",
+      "testCards": "测试卡号",
+      "forPayments": "进行付款。"
+    }
+  }
 }

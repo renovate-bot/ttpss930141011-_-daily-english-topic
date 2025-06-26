@@ -16,5 +16,77 @@
   "submit": "제출",
   "success": "성공",
   "warning": "경고",
-  "info": "정보"
+  "info": "정보",
+  "language": "언어",
+  "changeLanguage": "언어 변경",
+  "selectLanguage": "언어 선택",
+  "settings": "설정",
+  "profile": "프로필",
+  "signIn": "로그인",
+  "signOut": "로그아웃",
+  "comingSoon": "곧 출시",
+  "darkMode": "다크 모드",
+  "notifications": "알림 설정",
+  "learningPreferences": "학습 설정",
+  "billing": {
+    "title": "청구 관리",
+    "currentPlan": {
+      "title": "현재 플랜",
+      "description": "구독 및 청구 관리",
+      "monthlyCost": "월 요금",
+      "billingCycle": "청구 주기",
+      "status": "상태",
+      "active": "활성",
+      "canceled": "취소됨",
+      "nextBilling": "다음 청구일",
+      "expiresOn": "만료일",
+      "freePlan": "무료 플랜",
+      "proPlan": "프로 플랜",
+      "monthly": "월간",
+      "yearly": "연간"
+    },
+    "usage": {
+      "title": "이번 달 사용량",
+      "description": "각 기능의 사용량 추적",
+      "topicsGenerated": "생성된 주제",
+      "translations": "번역 횟수",
+      "apiCalls": "API 호출 횟수"
+    },
+    "paymentMethods": {
+      "title": "결제 수단",
+      "description": "Stripe를 통한 결제 수단 관리",
+      "manageInStripe": "Stripe에서 관리",
+      "secureMessage": "결제 수단은 Stripe를 통해 안전하게 관리됩니다",
+      "clickToUpdate": "\"Stripe에서 관리\"를 클릭하여 확인하거나 업데이트",
+      "encryptedInfo": "귀하의 결제 정보는 암호화되어 안전하게 보호됩니다. 모든 결제 처리에 Stripe를 사용합니다."
+    },
+    "invoiceHistory": {
+      "title": "청구서 내역",
+      "description": "과거 청구서 보기 및 다운로드",
+      "viewInStripe": "Stripe에서 보기",
+      "invoice": "청구서 번호",
+      "date": "날짜",
+      "description": "설명",
+      "amount": "금액",
+      "status": "상태",
+      "paid": "결제 완료",
+      "noInvoices": "아직 청구서가 없습니다",
+      "upgradeForInvoices": "프로 플랜으로 업그레이드하여 청구서 받기"
+    },
+    "buttons": {
+      "upgradeToPro": "프로 플랜으로 업그레이드",
+      "manageSubscription": "구독 관리",
+      "viewInStripe": "Stripe에서 보기"
+    },
+    "tabs": {
+      "paymentBilling": "결제 및 청구",
+      "invoiceHistory": "청구서 내역"
+    },
+    "demo": {
+      "title": "데모 모드",
+      "description": "Stripe 테스트 환경을 사용하는 데모입니다.",
+      "testCards": "테스트 카드",
+      "forPayments": "를 사용하여 결제하세요."
+    }
+  }
 }

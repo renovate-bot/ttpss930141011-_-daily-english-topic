@@ -27,5 +27,66 @@
   "comingSoon": "Coming Soon",
   "darkMode": "Dark Mode",
   "notifications": "Notifications",
-  "learningPreferences": "Learning Preferences"
+  "learningPreferences": "Learning Preferences",
+  "billing": {
+    "title": "Billing",
+    "currentPlan": {
+      "title": "Current Plan",
+      "description": "Manage your subscription and billing",
+      "monthlyCost": "Monthly Cost",
+      "billingCycle": "Billing Cycle",
+      "status": "Status",
+      "active": "Active",
+      "canceled": "Canceled",
+      "nextBilling": "Next Billing",
+      "expiresOn": "Expires On",
+      "freePlan": "Free Plan",
+      "proPlan": "Pro Plan",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
+    },
+    "usage": {
+      "title": "Usage This Month",
+      "description": "Track your usage across different features",
+      "topicsGenerated": "Topics Generated",
+      "translations": "Translations",
+      "apiCalls": "API Calls"
+    },
+    "paymentMethods": {
+      "title": "Payment Methods",
+      "description": "Manage your payment methods through Stripe",
+      "manageInStripe": "Manage in Stripe",
+      "secureMessage": "Payment methods are managed securely through Stripe",
+      "clickToUpdate": "Click \"Manage in Stripe\" to view or update",
+      "encryptedInfo": "Your payment information is encrypted and secure. We use Stripe for all payment processing."
+    },
+    "invoiceHistory": {
+      "title": "Invoice History",
+      "description": "View and download your past invoices",
+      "viewInStripe": "View in Stripe",
+      "invoice": "Invoice",
+      "date": "Date",
+      "description": "Description",
+      "amount": "Amount",
+      "status": "Status",
+      "paid": "Paid",
+      "noInvoices": "No invoices yet",
+      "upgradeForInvoices": "Upgrade to Pro to start receiving invoices"
+    },
+    "buttons": {
+      "upgradeToPro": "Upgrade to Pro",
+      "manageSubscription": "Manage Subscription",
+      "viewInStripe": "View in Stripe"
+    },
+    "tabs": {
+      "paymentBilling": "Payment & Billing",
+      "invoiceHistory": "Invoice History"
+    },
+    "demo": {
+      "title": "Demo Mode",
+      "description": "This is a demo using Stripe test environment. Use",
+      "testCards": "test cards",
+      "forPayments": "for payments."
+    }
+  }
 }

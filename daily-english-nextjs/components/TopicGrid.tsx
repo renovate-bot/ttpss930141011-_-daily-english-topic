@@ -102,7 +102,12 @@ export default function TopicGrid({ topics, lang = 'zh-TW', dictionary }: TopicG
       upgrade: 'Upgrade',
       currentPlan: 'Current Plan',
       manageBilling: 'Manage Billing',
-      viewPlans: 'View Plans'
+      viewPlans: 'View Plans',
+      voiceCallAuthRequired: 'Sign in to use voice call',
+      voiceCallAuthDescription: 'Click the sign in button in the top right corner',
+      voiceCallAuthAction: 'Sign In Now',
+      voiceCallError: 'Unable to start voice call',
+      voiceCallErrorDescription: 'Please check your internet connection and try again'
     },
     homepage: {
       hero: {
@@ -226,6 +231,64 @@ export default function TopicGrid({ topics, lang = 'zh-TW', dictionary }: TopicG
       needHelp: 'Need help?',
       contactSupport: 'Contact Support',
       managePlan: 'Manage Plan',
+      demo: {
+        title: 'Demo Mode',
+        description: 'This is a demo using Stripe test environment. Use',
+        testCardsLink: 'test cards',
+        forPayments: 'for payments.'
+      },
+      currentPlan: {
+        title: 'Current Plan',
+        description: 'Manage your subscription and billing',
+        monthlyCost: 'Monthly Cost',
+        billingCycle: 'Billing Cycle',
+        status: 'Status',
+        expiresOn: 'Expires On',
+        nextBilling: 'Next Billing',
+        monthly: 'Monthly',
+        active: 'Active',
+        canceled: 'Canceled',
+        na: 'N/A',
+        upgradeButton: 'Upgrade to Pro',
+        manageButton: 'Manage Subscription'
+      },
+      usage: {
+        title: 'Usage This Month',
+        description: 'Track your usage across different features',
+        topicsGenerated: 'Topics Generated',
+        translations: 'Translations',
+        apiCalls: 'API Calls'
+      },
+      tabs: {
+        paymentBilling: 'Payment & Billing',
+        invoiceHistory: 'Invoice History'
+      },
+      payment: {
+        title: 'Payment Methods',
+        description: 'Manage your payment methods through Stripe',
+        manageInStripe: 'Manage in Stripe',
+        secureMessage: 'Payment methods are managed securely through Stripe',
+        clickToView: 'Click "Manage in Stripe" to view or update'
+      },
+      invoices: {
+        title: 'Invoice History',
+        description: 'View and download your past invoices',
+        viewInStripe: 'View in Stripe',
+        noInvoices: 'No invoices yet',
+        upgradeToSee: 'Upgrade to Pro to start receiving invoices',
+        tableHeaders: {
+          invoice: 'Invoice',
+          date: 'Date',
+          description: 'Description',
+          amount: 'Amount',
+          status: 'Status'
+        },
+        paid: 'Paid',
+        planMonthly: ' Plan - Monthly'
+      },
+      security: {
+        message: 'Your payment information is encrypted and secure. We use Stripe for all payment processing.'
+      },
       subscription: {
         title: 'Current Subscription',
         description: 'Manage your subscription',

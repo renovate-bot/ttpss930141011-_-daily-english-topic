@@ -27,5 +27,66 @@
   "comingSoon": "即將推出",
   "darkMode": "深色模式",
   "notifications": "通知設定",
-  "learningPreferences": "學習偏好"
+  "learningPreferences": "學習偏好",
+  "billing": {
+    "title": "帳單管理",
+    "currentPlan": {
+      "title": "目前方案",
+      "description": "管理您的訂閱和帳單",
+      "monthlyCost": "月費",
+      "billingCycle": "計費週期",
+      "status": "狀態",
+      "active": "使用中",
+      "canceled": "已取消",
+      "nextBilling": "下次扣款日",
+      "expiresOn": "到期日",
+      "freePlan": "免費方案",
+      "proPlan": "專業方案",
+      "monthly": "月繳",
+      "yearly": "年繳"
+    },
+    "usage": {
+      "title": "本月使用量",
+      "description": "追蹤您在各項功能的使用情況",
+      "topicsGenerated": "產生的主題",
+      "translations": "翻譯次數",
+      "apiCalls": "API 呼叫次數"
+    },
+    "paymentMethods": {
+      "title": "付款方式",
+      "description": "透過 Stripe 管理您的付款方式",
+      "manageInStripe": "在 Stripe 中管理",
+      "secureMessage": "付款方式透過 Stripe 安全管理",
+      "clickToUpdate": "點擊「在 Stripe 中管理」以查看或更新",
+      "encryptedInfo": "您的付款資訊已加密並受到保護。我們使用 Stripe 處理所有付款流程。"
+    },
+    "invoiceHistory": {
+      "title": "發票記錄",
+      "description": "查看並下載您的過往發票",
+      "viewInStripe": "在 Stripe 中查看",
+      "invoice": "發票編號",
+      "date": "日期",
+      "description": "說明",
+      "amount": "金額",
+      "status": "狀態",
+      "paid": "已付款",
+      "noInvoices": "尚無發票",
+      "upgradeForInvoices": "升級至專業版即可開始接收發票"
+    },
+    "buttons": {
+      "upgradeToPro": "升級至專業版",
+      "manageSubscription": "管理訂閱",
+      "viewInStripe": "在 Stripe 中查看"
+    },
+    "tabs": {
+      "paymentBilling": "付款與帳單",
+      "invoiceHistory": "發票記錄"
+    },
+    "demo": {
+      "title": "示範模式",
+      "description": "這是使用 Stripe 測試環境的示範。請使用",
+      "testCards": "測試卡號",
+      "forPayments": "進行付款。"
+    }
+  }
 }
