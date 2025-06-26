@@ -26,7 +26,7 @@ export function SignInModal({
   showSignInModal,
   setShowSignInModal,
 }: SignInModalProps) {
-  const [signInClicked, setSignInClicked] = useState(false)
+  const [loadingProvider, setLoadingProvider] = useState<string | null>(null)
 
   return (
     <Modal className="!max-w-sm" showModal={showSignInModal} setShowModal={setShowSignInModal}>
@@ -41,16 +41,19 @@ export function SignInModal({
 
         <div className="flex flex-col space-y-4 bg-secondary/50 px-4 py-6 md:px-12">
           <Button
-            disabled={signInClicked}
+            disabled={loadingProvider !== null}
             variant="outline"
             className="cursor-pointer relative w-full h-9 text-lg font-medium text-foreground"
             onClick={() => {
-              setSignInClicked(true)
+              setLoadingProvider('google')
               signIn('google', { callbackUrl: '/' })
             }}
           >
-            {signInClicked ? (
-              <LoadingSpinner />
+            {loadingProvider === 'google' ? (
+              <>
+                <LoadingSpinner />
+                <span className="ml-2">Signing in...</span>
+              </>
             ) : (
               <>
                 <Icons.google className="mr-2 h-5 w-5" />
@@ -60,15 +63,18 @@ export function SignInModal({
           </Button>
 
           <Button
-            disabled={signInClicked}
+            disabled={loadingProvider !== null}
             className="cursor-pointer relative w-full h-9 text-lg font-medium bg-[#24292e] text-white hover:bg-[#24292e]/90"
             onClick={() => {
-              setSignInClicked(true)
+              setLoadingProvider('github')
               signIn('github', { callbackUrl: '/' })
             }}
           >
-            {signInClicked ? (
-              <LoadingSpinner />
+            {loadingProvider === 'github' ? (
+              <>
+                <LoadingSpinner />
+                <span className="ml-2">Signing in...</span>
+              </>
             ) : (
               <>
                 <Icons.gitHub className="mr-2 h-5 w-5" />
