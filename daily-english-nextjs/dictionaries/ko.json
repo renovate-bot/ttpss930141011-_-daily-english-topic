@@ -32,7 +32,12 @@
     "upgrade": "업그레이드",
     "currentPlan": "현재 플랜",
     "manageBilling": "청구 관리",
-    "viewPlans": "플랜 보기"
+    "viewPlans": "플랜 보기",
+    "voiceCallAuthRequired": "음성 통화 기능을 사용하려면 로그인하세요",
+    "voiceCallAuthDescription": "오른쪽 상단의 로그인 버튼을 클릭하세요",
+    "voiceCallAuthAction": "지금 로그인",
+    "voiceCallError": "음성 통화를 시작할 수 없습니다",
+    "voiceCallErrorDescription": "네트워크 연결을 확인하고 다시 시도해주세요"
   },
   "homepage": {
     "hero": {

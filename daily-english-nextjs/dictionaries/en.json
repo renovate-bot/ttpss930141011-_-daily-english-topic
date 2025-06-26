@@ -32,7 +32,12 @@
     "upgrade": "Upgrade",
     "currentPlan": "Current Plan",
     "manageBilling": "Manage Billing",
-    "viewPlans": "View Plans"
+    "viewPlans": "View Plans",
+    "voiceCallAuthRequired": "Please sign in to use voice call feature",
+    "voiceCallAuthDescription": "Click the sign in button in the top right corner",
+    "voiceCallAuthAction": "Sign In Now",
+    "voiceCallError": "Unable to start voice call",
+    "voiceCallErrorDescription": "Please check your network connection and try again"
   },
   "homepage": {
     "hero": {

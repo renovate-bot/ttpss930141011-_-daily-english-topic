@@ -32,7 +32,12 @@
     "upgrade": "升級",
     "currentPlan": "目前方案",
     "manageBilling": "管理帳單",
-    "viewPlans": "查看方案"
+    "viewPlans": "查看方案",
+    "voiceCallAuthRequired": "請先登入以使用語音對話功能",
+    "voiceCallAuthDescription": "點擊右上角的登入按鈕",
+    "voiceCallAuthAction": "立即登入",
+    "voiceCallError": "無法啟動語音對話",
+    "voiceCallErrorDescription": "請檢查網路連線並重試"
   },
   "homepage": {
     "hero": {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { SessionProvider } from "@/components/providers/session-provider";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,6 +42,7 @@ export default function RootLayout({
         <SessionProvider>
           {children}
           <ModalProvider />
+          <Toaster richColors position="top-center" />
         </SessionProvider>
       </body>
     </html>
