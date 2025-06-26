@@ -8,21 +8,22 @@ import { PrismaAdapter } from '@auth/prisma-adapter'
 import Google from 'next-auth/providers/google'
 import GitHub from 'next-auth/providers/github'
 import { prisma } from '@/lib/prisma'
+import { UserRole } from '@prisma/client'
 
 /**
  * NextAuth configuration with Prisma adapter and OAuth providers.
  */
-export const { 
-  handlers, 
-  auth, 
-  signIn, 
-  signOut 
+export const {
+  handlers,
+  auth,
+  signIn,
+  signOut
 } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  
+
   // Trust proxy headers in production
   trustHost: true,
-  
+
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -40,15 +41,15 @@ export const {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
   ],
-  
+
   session: {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
-  
+
   // Remove custom pages to allow direct OAuth redirects
   // pages: {},
-  
+
   callbacks: {
     /**
      * JWT callback to add user ID to token.
@@ -62,7 +63,7 @@ export const {
       }
       return token
     },
-    
+
     /**
      * Session callback to add user ID to session.
      */
@@ -70,26 +71,27 @@ export const {
       if (token && session.user) {
         session.user.id = token.id as string
         session.user.provider = token.provider as string
+        session.user.role = token.role as UserRole
       }
       return session
     },
-    
+
     /**
      * Sign in callback for additional validation.
      */
-    async signIn({ user, account, profile }) {
+    async signIn({ user, account }) {
       // Example: Block certain email domains
       if (user.email?.endsWith('@blocked-domain.com')) {
         return false
       }
-      
+
       // Log sign in for monitoring
       console.log(`[Auth] User signed in: ${user.email} via ${account?.provider}`)
-      
+
       return true
     },
   },
-  
+
   events: {
     /**
      * Log authentication events for monitoring.
@@ -97,7 +99,7 @@ export const {
     async signIn({ user, account }) {
       console.log(`[Auth Event] Sign in: ${user.email} via ${account?.provider}`)
     },
-    async signOut(message) {
+    async signOut() {
       // Log sign out event
       console.log(`[Auth Event] Sign out event triggered`)
     },
@@ -108,6 +110,6 @@ export const {
       console.log(`[Auth Event] Account linked: ${user.email} with ${account.provider}`)
     },
   },
-  
+
   debug: process.env.NODE_ENV === 'development',
 })
