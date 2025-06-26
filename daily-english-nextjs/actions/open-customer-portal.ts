@@ -1,34 +1,42 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { auth } from "@/auth";
+
 import { stripe } from "@/lib/stripe";
-import { getUserSubscriptionPlan } from "@/lib/subscription";
 import { absoluteUrl } from "@/lib/utils";
 
-export async function openCustomerPortal() {
+export type responseAction = {
+  status: "success" | "error";
+  stripeUrl?: string;
+};
+
+const billingUrl = absoluteUrl("/dashboard/settings/billing");
+
+export async function openCustomerPortal(
+  userStripeId: string,
+): Promise<responseAction> {
+  let redirectUrl: string = "";
+
   try {
     const session = await auth();
-    if (!session?.user?.id) {
+
+    if (!session?.user || !session?.user.email) {
       throw new Error("Unauthorized");
     }
 
-    const subscriptionPlan = await getUserSubscriptionPlan(session.user.id);
+    if (userStripeId) {
+      const stripeSession = await stripe.billingPortal.sessions.create({
+        customer: userStripeId,
+        return_url: billingUrl,
+      });
 
-    if (!subscriptionPlan.isPro || !subscriptionPlan.stripeCustomerId) {
-      throw new Error("您需要先訂閱 Pro 方案");
+      redirectUrl = stripeSession.url as string;
     }
-
-    const portalSession = await stripe.billingPortal.sessions.create({
-      customer: subscriptionPlan.stripeCustomerId,
-      return_url: absoluteUrl("/dashboard/billing"),
-    });
-
-    return { url: portalSession.url };
   } catch (error) {
-    console.error("Error:", error);
-    if (error instanceof Error) {
-      return { error: error.message };
-    }
-    return { error: "無法開啟客戶入口網站" };
+    console.log(error);
+    throw new Error("Failed to generate user stripe session");
   }
+
+  redirect(redirectUrl);
 }

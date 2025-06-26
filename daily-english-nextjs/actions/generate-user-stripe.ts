@@ -25,7 +25,7 @@ export async function generateUserStripe(
 
     const subscriptionPlan = await getUserSubscriptionPlan(session.user.id);
 
-    if (subscriptionPlan.isPro && subscriptionPlan.stripeCustomerId) {
+    if (subscriptionPlan.isPaid && subscriptionPlan.stripeCustomerId) {
       // User on Pro plan - redirect to billing portal
       const stripeSession = await stripe.billingPortal.sessions.create({
         customer: subscriptionPlan.stripeCustomerId,
