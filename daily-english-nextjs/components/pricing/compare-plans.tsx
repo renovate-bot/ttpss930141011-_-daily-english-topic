@@ -27,39 +27,39 @@ export function ComparePlans() {
       />
 
       <div className="my-10 overflow-x-scroll max-lg:mx-[-0.8rem] md:overflow-x-visible">
-        <table className="w-full table-fixed">
+        <table className="w-full table-fixed backdrop-blur-lg bg-white/10 rounded-2xl overflow-hidden border border-white/20">
           <thead>
-            <tr className="divide-x divide-border border">
-              <th className="sticky left-0 z-20 w-40 bg-accent p-5 md:w-1/4 lg:top-14"></th>
+            <tr className="divide-x divide-white/20 border-b border-white/20">
+              <th className="sticky left-0 z-20 w-40 bg-white/10 backdrop-blur-sm p-5 md:w-1/4 lg:top-14"></th>
               {plansColumns.map((col) => (
                 <th
                   key={col}
-                  className="sticky z-10 w-40 bg-accent p-5 font-heading text-xl capitalize tracking-wide md:w-auto lg:top-14 lg:text-2xl"
+                  className="sticky z-10 w-40 bg-white/10 backdrop-blur-sm p-5 font-heading text-xl capitalize tracking-wide text-white md:w-auto lg:top-14 lg:text-2xl"
                 >
                   {col}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-x divide-border border">
+          <tbody className="divide-y divide-white/20 text-gray-200">
             {comparePlans.map((row: PlansRow, index: number) => (
-              <tr key={index} className="divide-x divide-border border">
+              <tr key={index} className="divide-x divide-white/20 hover:bg-white/5 transition-colors">
                 <td
                   data-tip={row.tooltip ? row.tooltip : ""}
-                  className="sticky left-0 bg-accent md:bg-transparent"
+                  className="sticky left-0 bg-white/5 backdrop-blur-sm md:bg-transparent"
                 >
                   <div className="flex items-center justify-between space-x-2 p-4">
-                    <span className="text-[15px] font-medium lg:text-base">
+                    <span className="text-[15px] font-medium lg:text-base text-gray-100">
                       {row.feature}
                     </span>
                     {row.tooltip && (
                       <Popover>
                         <PopoverTrigger className="rounded p-1 hover:bg-muted">
-                          <Info className="size-[18px] text-muted-foreground" />
+                          <Info className="size-[18px] text-gray-400" />
                         </PopoverTrigger>
                         <PopoverContent
                           side="top"
-                          className="max-w-80 p-3 text-sm"
+                          className="max-w-80 p-3 text-sm bg-gray-900 border-gray-700 text-gray-200"
                         >
                           {row.tooltip}
                         </PopoverContent>
@@ -70,7 +70,7 @@ export function ComparePlans() {
                 {plansColumns.map((col) => (
                   <td
                     key={col}
-                    className="p-4 text-center text-[15px] text-muted-foreground lg:text-base"
+                    className="p-4 text-center text-[15px] text-gray-300 lg:text-base"
                   >
                     {renderCell(row[col])}
                   </td>

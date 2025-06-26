@@ -9,6 +9,8 @@ import Image from "next/image";
 import callWaiting from "@/public/illustrations/call-waiting.svg";
 import { ComparePlans } from "@/components/pricing/compare-plans";
 import { PricingFaq } from "@/components/pricing/pricing-faq";
+import PageLayout from "@/components/layouts/PageLayout";
+import Footer from "@/components/layouts/Footer";
 
 export default async function PricingPage({
   params,
@@ -50,11 +52,14 @@ export default async function PricingPage({
   }
 
   return (
-    <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <PricingCards userId={session?.user?.id} subscriptionPlan={subscriptionPlan} dict={dict} />
-      <hr className="container" />
-      <ComparePlans />
-      <PricingFaq />
-    </div>
+    <PageLayout>
+      <div className="flex w-full flex-col gap-16 py-8 md:py-8">
+        <PricingCards userId={session?.user?.id} subscriptionPlan={subscriptionPlan} dict={dict} />
+        <hr className="container border-white/20" />
+        <ComparePlans />
+        <PricingFaq />
+      </div>
+      <Footer lang={lang} />
+    </PageLayout>
   );
 }

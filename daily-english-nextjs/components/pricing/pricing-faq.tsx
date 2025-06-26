@@ -53,9 +53,15 @@ export function PricingFaq() {
 
       <Accordion type="single" collapsible className="my-12 w-full">
         {pricingFaqData.map((faqItem) => (
-          <AccordionItem key={faqItem.id} value={faqItem.id}>
-            <AccordionTrigger>{faqItem.question}</AccordionTrigger>
-            <AccordionContent className="text-sm text-muted-foreground sm:text-[15px]">
+          <AccordionItem 
+            key={faqItem.id} 
+            value={faqItem.id}
+            className="border-white/20 bg-white/5 backdrop-blur-sm rounded-lg mb-4 px-6 hover:bg-white/10 transition-colors"
+          >
+            <AccordionTrigger className="text-gray-100 hover:text-white">
+              {faqItem.question}
+            </AccordionTrigger>
+            <AccordionContent className="text-sm text-gray-300 sm:text-[15px]">
               {faqItem.answer}
             </AccordionContent>
           </AccordionItem>
